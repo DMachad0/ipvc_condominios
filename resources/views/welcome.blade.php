@@ -22,7 +22,7 @@
         </style>
     </head>
     <body class="antialiased">
-        Welcome, {{ $name }}, e {{ $name2 }}<br>
+        Welcome<br>
         Current timestap {{ time() }}
     </body>
 </html>
