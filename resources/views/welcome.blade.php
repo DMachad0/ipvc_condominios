@@ -21,13 +21,7 @@
         </style>
     </head>
     <body class="antialiased">
-        @if ($name === "Diogo")
-            Congrats
-        @else
-            Fraco
-        @endif
-        
-        Welcome, {{ $name }}<br>
+        Welcome, {{ $name }}, e {{ $name2 }}<br>
         Current timestap {{ time() }}
     </body>
 </html>
