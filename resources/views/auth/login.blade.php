@@ -31,63 +31,67 @@
     <body class="focused-form animated-content">
         
         
-<div class="container" id="registration-form">
+<div class="container" id="login-form">
 	<a href="index.html" class="login-logo"><img src="assets/img/logo-dark.png"></a>
-	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
-            @foreach ($errors->all() as $error)
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+                @foreach ($errors->all() as $error)
                     <div class="alert alert-dismissable alert-danger">
                         <i class="fa fa-close"></i>&nbsp; {{ $error }}
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                     </div>
-            @endforeach
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h2>Registration Form</h2>
-				</div>
-				<div class="panel-body">
-                    <form method="POST" class="form-horizontal" id="validate-form" action="{{ route('register.custom') }}">    
-                        @csrf
-						<div class="form-group mb-md">
-	                        <div class="col-xs-8 col-xs-offset-2">
-	                        	<input type="text" class="form-control" name="name" id="FulltName" placeholder="Nome">
-	                        </div>
-	                       
-						</div>
-						<div class="form-group mb-md">
-	                        <div class="col-xs-8 col-xs-offset-2">
-	                        	<input type="text" class="form-control" name="email" id="Email" placeholder="Email">
-	                        </div>
-						</div>
-						<div class="form-group mb-md">
-	                        <div class="col-xs-8 col-xs-offset-2">
-	                        	<input type="password" class="form-control" name="password" id="Password" placeholder="Password">
-	                        </div>
-						</div>
-						<div class="form-group mb-md">
-	                        <div class="col-xs-8 col-xs-offset-2">
-	                        	<input type="password" class="form-control" name="password_confirmation" id="ConfirmPassword" placeholder="Confirmar Password">
-	                        </div>
-						</div>
-						<div class="form-group mb-n">
-							<div class="col-xs-offset-2 col-xs-8">
-								<div class="checkbox">
-									<label for=""><input type="checkbox" />&nbsp;&nbsp;I accept the <a href="#">user agreement</a></label>
+                @endforeach
+				@if (Session::has('success'))
+					<div class="alert alert-dismissable alert-success">
+                        <i class="fa fa-close"></i>&nbsp; {{ Session::get('success') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    </div>
+				@endif
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h2>Login</h2>
+					</div>
+					<div class="panel-body">
+                        <form method="POST" class="form-horizontal" id="validate-form" action="{{ route('login.custom') }}">
+                            @csrf
+							<div class="form-group mb-md">
+		                        <div class="col-xs-12">
+		                        	<div class="input-group">							
+										<span class="input-group-addon">
+											<i class="ti ti-user"></i>
+										</span>
+										<input type="email" name="email" class="form-control" placeholder="E-Mail" required>
+									</div>
+		                        </div>
+							</div>
+
+							<div class="form-group mb-md">
+		                        <div class="col-xs-12">
+		                        	<div class="input-group">
+										<span class="input-group-addon">
+											<i class="ti ti-key"></i>
+										</span>
+										<input type="password" name="password" class="form-control" placeholder="Password" required>
+									</div>
+		                        </div>
+							</div>
+
+							<div class="form-group mb-n">
+								<div class="col-xs-12">
+									<a href="/forgot-password" class="pull-left">Esqueceu a password?</a>
 								</div>
 							</div>
-						</div>
-						<div class="panel-footer">
-                            <div class="clearfix">
-                                <a href="/login" class="btn btn-default pull-left">Already Registered? Login</a>
-                                <button class="btn btn-primary btn-raised pull-right">Register</button>
+                            <div class="panel-footer">
+                                <div class="clearfix">
+                                    <a href="/registration" class="btn btn-default pull-left">Criar Conta</a>
+                                    <button class="btn btn-primary btn-raised pull-right">Entrar</button>
+                                </div>
                             </div>
-                        </div>
-					</form>
+						</form>
+					</div>	
 				</div>
-				
 			</div>
 		</div>
-	</div>
 </div>
 
     
@@ -126,6 +130,7 @@
 <!-- End loading site level scripts -->
     <!-- Load page level scripts-->
     
+
     <!-- End loading page level scripts-->
     </body>
 </html>

@@ -16917,7 +16917,7 @@ body.sidebar-collapsed #topnav .navbar-brand img:not(.show-on-collapse) {
   margin-right: 0;
 }
 #topnav .navbar-nav.toolbar > li > a {
-  padding: 14px 16px;
+  /*padding: 14px 16px;*/
   font-weight: 500;
 }
 #topnav .navbar-nav.toolbar > li:last-child {

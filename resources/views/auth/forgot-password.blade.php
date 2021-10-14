@@ -41,12 +41,18 @@
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                     </div>
                 @endforeach
+				@if (Session::has('success'))
+					<div class="alert alert-dismissable alert-success">
+                        <i class="fa fa-close"></i>&nbsp; {{ Session::get('success') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    </div>
+				@endif
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h2>Login Form</h2>
+						<h2>Esqueceu a password</h2>
 					</div>
 					<div class="panel-body">
-                        <form method="POST" class="form-horizontal" id="validate-form" action="{{ route('login.custom') }}">
+                        <form method="POST" class="form-horizontal" id="validate-form" action="{{ route('password.email') }}">
                             @csrf
 							<div class="form-group mb-md">
 		                        <div class="col-xs-12">
@@ -54,36 +60,15 @@
 										<span class="input-group-addon">
 											<i class="ti ti-user"></i>
 										</span>
-										<input type="text" name="email" class="form-control" placeholder="E-Mail">
+										<input type="text" name="email" class="form-control" placeholder="E-Mail" required>
 									</div>
 		                        </div>
 							</div>
 
-							<div class="form-group mb-md">
-		                        <div class="col-xs-12">
-		                        	<div class="input-group">
-										<span class="input-group-addon">
-											<i class="ti ti-key"></i>
-										</span>
-										<input type="password" name="password" class="form-control" placeholder="Password">
-									</div>
-		                        </div>
-							</div>
-
-							<div class="form-group mb-n">
-								<div class="col-xs-12">
-									<a href="extras-forgotpassword.html" class="pull-left">Forgot password?</a>
-									<div class="checkbox-inline icheck pull-right p-n">
-										<div class="checkbox">
-											<label for=""><input type="checkbox" /> Remeber me</a></label>
-										</div>
-									</div>
-								</div>
-							</div>
                             <div class="panel-footer">
                                 <div class="clearfix">
-                                    <a href="/registration" class="btn btn-default pull-left">Register</a>
-                                    <button class="btn btn-primary btn-raised pull-right">Login</button>
+                                    <a href="/login" class="btn btn-default pull-left">Cancelar</a>
+                                    <button class="btn btn-primary btn-raised pull-right">Enviar</button>
                                 </div>
                             </div>
 						</form>

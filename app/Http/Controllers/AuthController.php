@@ -7,12 +7,15 @@ use Hash;
 use Session;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Str;
+use Illuminate\Auth\Events\PasswordReset;
 
 class AuthController extends Controller
 {
     public function index()
     {
-        return view('login');
+        return view('auth.login');
     }  
       
 
@@ -25,8 +28,7 @@ class AuthController extends Controller
    
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('index')
-                        ->withSuccess('Signed in');
+            return redirect()->intended('/')->withSuccess('Signed in');
         }
   
         return redirect("login")->withErrors('Utilizador inválido.');
@@ -36,7 +38,7 @@ class AuthController extends Controller
 
     public function registration()
     {
-        return view('register');
+        return view('auth.register');
     }
       
 
@@ -51,7 +53,7 @@ class AuthController extends Controller
         $data = $request->all();
         $check = $this->create($data);
          
-        return redirect("/")->withSuccess('You have signed-in');
+        return redirect("/login")->withSuccess('Conta criada com sucesso.');
     }
 
 
@@ -80,5 +82,50 @@ class AuthController extends Controller
         Auth::logout();
   
         return Redirect('login');
+    }
+
+    public function pwreset() {
+        return view('auth.forgot-password');
+    }
+
+    public function pwreset2(Request $request) {
+        $request->validate(['email' => 'required|email']);
+    
+        $status = Password::sendResetLink(
+            $request->only('email')
+        );
+    
+        return $status === Password::RESET_LINK_SENT
+        ? redirect()->route('login')->withSuccess('Verifique o email.')
+        : back()->withErrors(['email' => __($status)]);
+    }
+
+    public function pwreset3($token) {
+        return view('auth.reset-password', ['token' => $token]);
+    }
+
+    public function pwreset4(Request $request) {
+        $request->validate([
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:6|confirmed',
+        ]);
+    
+        $status = Password::reset(
+            $request->only('email', 'password', 'password_confirmation', 'token'),
+            function ($user, $password) {
+                $user->forceFill([
+                    'password' => Hash::make($password)
+                ])->setRememberToken(Str::random(60));
+    
+                $user->save();
+    
+                event(new PasswordReset($user));
+            }
+        );
+    
+        return $status === Password::PASSWORD_RESET
+                    ? redirect()->route('login')->withSuccess('Password modficada.')
+                    : back()->withErrors(['email' => [__($status)]]);
     }
 }

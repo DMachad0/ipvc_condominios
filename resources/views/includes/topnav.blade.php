@@ -215,6 +215,24 @@
 				</span>
 			</a>
 		</li>
+
+		
+		<li style="height: 64px;transition-duration: 300ms;color:#757575">
+			<a href="#" class="dropdown-toggle" data-toggle='dropdown'>{{ Auth::user()->name }} <span class="icon-bg"><i class="material-icons">settings</i></span><span
+			class="badge badge-info"></span></a>
+			<div class="dropdown-menu animated notifications">
+				<div class="topnav-dropdown-header">
+				<span>Definições da Conta</span>
+				
+				</div>
+				<div class="topnav-dropdown-footer">
+					<a href="#">Mudar Password</a>
+				</div>
+				<div class="topnav-dropdown-footer">
+					<a href="/signout">Sair da Conta</a>
+				</div>
+			</div>
+		</li>
 		
 	</ul>
 

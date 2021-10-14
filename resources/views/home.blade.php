@@ -41,7 +41,6 @@
 
     <body class="animated-content infobar-overlay">
         
-        
     @include('includes.topnav')
 
         <div id="wrapper">
