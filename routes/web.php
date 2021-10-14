@@ -14,12 +14,17 @@ use App\Http\Controllers\AuthController;
 |
 */
 Route::get('/', [AuthController::class, 'dashboard']); 
-Route::get('login', [AuthController::class, 'index'])->name('login');
-Route::post('custom-login', [AuthController::class, 'customLogin'])->name('login.custom'); 
-Route::get('registration', [AuthController::class, 'registration'])->name('register-user');
-Route::post('custom-registration', [AuthController::class, 'customRegistration'])->name('register.custom'); 
+
+Route::get('login', [AuthController::class, 'login'])->name('login');
+Route::post('login', [AuthController::class, 'confirmarLogin'])->name('confirmarLogin'); 
+
+Route::get('registration', [AuthController::class, 'registro'])->name('registro');
+Route::post('registration', [AuthController::class, 'confirmarRegistro'])->name('confirmarRegistro'); 
+
 Route::get('signout', [AuthController::class, 'signOut'])->name('signout');
-Route::get('forgot-password', [AuthController::class, 'pwreset'])->name('password.request');
-Route::post('forgot-password', [AuthController::class, 'pwreset2'])->name('password.email');
-Route::get('reset-password/{token}', [AuthController::class, 'pwreset3'])->name('password.reset');
-Route::post('reset-password',[AuthController::class, 'pwreset4'])->name('password.update');
+
+Route::get('forgot-password', [AuthController::class, 'esquecerPw'])->name('password.request');
+Route::post('forgot-password', [AuthController::class, 'confirmarEsquecerPw'])->name('password.email');
+
+Route::get('reset-password/{token}', [AuthController::class, 'resetPw'])->name('password.reset');
+Route::post('reset-password',[AuthController::class, 'confirmarResetPw'])->name('password.update');

@@ -46,7 +46,7 @@
 					<h2>Criar Conta</h2>
 				</div>
 				<div class="panel-body">
-                    <form method="POST" class="form-horizontal" id="validate-form" action="{{ route('register.custom') }}">    
+                    <form method="POST" class="form-horizontal" id="validate-form" action="{{ route('confirmarRegistro') }}">    
                         @csrf
 						<div class="form-group mb-md">
 	                        <div class="col-xs-8 col-xs-offset-2">

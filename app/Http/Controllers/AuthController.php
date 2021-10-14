@@ -13,13 +13,13 @@ use Illuminate\Auth\Events\PasswordReset;
 
 class AuthController extends Controller
 {
-    public function index()
+    public function login()
     {
         return view('auth.login');
     }  
       
 
-    public function customLogin(Request $request)
+    public function confirmarLogin(Request $request)
     {
         $request->validate([
             'email' => 'required',
@@ -36,13 +36,13 @@ class AuthController extends Controller
 
 
 
-    public function registration()
+    public function registro()
     {
         return view('auth.register');
     }
       
 
-    public function customRegistration(Request $request)
+    public function confirmarRegistro(Request $request)
     {  
         $request->validate([
             'name' => 'required',
@@ -84,11 +84,11 @@ class AuthController extends Controller
         return Redirect('login');
     }
 
-    public function pwreset() {
+    public function esquecerPw() {
         return view('auth.forgot-password');
     }
 
-    public function pwreset2(Request $request) {
+    public function confirmarEsquecerPw(Request $request) {
         $request->validate(['email' => 'required|email']);
     
         $status = Password::sendResetLink(
@@ -100,11 +100,11 @@ class AuthController extends Controller
         : back()->withErrors(['email' => __($status)]);
     }
 
-    public function pwreset3($token) {
+    public function resetPw($token) {
         return view('auth.reset-password', ['token' => $token]);
     }
 
-    public function pwreset4(Request $request) {
+    public function confirmarResetPw(Request $request) {
         $request->validate([
             'token' => 'required',
             'email' => 'required|email',

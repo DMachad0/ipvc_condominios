@@ -32,7 +32,7 @@
         
         
 <div class="container" id="login-form">
-	<a href="index.html" class="login-logo"><img src="assets/img/logo-dark.png"></a>
+	<a href="index.html" class="login-logo"><img src="assets/favicon.png"></a>
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
                 @foreach ($errors->all() as $error)
@@ -52,7 +52,7 @@
 						<h2>Login</h2>
 					</div>
 					<div class="panel-body">
-                        <form method="POST" class="form-horizontal" id="validate-form" action="{{ route('login.custom') }}">
+                        <form method="POST" class="form-horizontal" id="validate-form" action="{{ route('confirmarLogin') }}">
                             @csrf
 							<div class="form-group mb-md">
 		                        <div class="col-xs-12">
