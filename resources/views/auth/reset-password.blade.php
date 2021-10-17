@@ -32,7 +32,7 @@
         
         
 <div class="container" id="login-form">
-	<a href="index.html" class="login-logo"><img src="/assets/img/logo-dark.png"></a>
+	<a href="#" class="login-logo"><img width="15%" src="favicon.png"></a>
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
                 @foreach ($errors->all() as $error)
@@ -72,7 +72,7 @@
 										<span class="input-group-addon">
 											<i class="ti ti-key"></i>
 										</span>
-										<input type="password" name="password" class="form-control" placeholder="Password">
+										<input type="password" name="password" class="form-control" placeholder="Password" required>
 									</div>
 		                        </div>
 							</div>
@@ -83,7 +83,7 @@
 										<span class="input-group-addon">
 											<i class="ti ti-key"></i>
 										</span>
-										<input type="password" name="password_confirmation" class="form-control" placeholder="Confirmar Password">
+										<input type="password" name="password_confirmation" class="form-control" placeholder="Confirmar Password" required>
 									</div>
 		                        </div>
 							</div>

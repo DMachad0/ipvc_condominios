@@ -32,7 +32,7 @@
         
         
 <div class="container" id="registration-form">
-	<a href="index.html" class="login-logo"><img src="assets/img/logo-dark.png"></a>
+	<a href="#" class="login-logo"><img width="15%" src="favicon.png"></a>
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3">
             @foreach ($errors->all() as $error)
