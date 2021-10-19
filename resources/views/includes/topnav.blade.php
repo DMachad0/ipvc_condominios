@@ -2,7 +2,7 @@
 	<!-- <div id="page-progress-loader" class="show"></div> -->
 
 	<div class="logo-area">
-		<a class="navbar-brand navbar-brand-primary" href="index.html">
+		<a class="navbar-brand navbar-brand-primary" href="#">
 			<img class="show-on-collapse img-logo-white" alt="Paper" src="assets/img/logo-icon-white.png">
 			<img class="show-on-collapse img-logo-dark" alt="Paper" src="assets/img/logo-icon-dark.png">
 			<img class="img-white" alt="Paper" src="assets/img/logo-white.png">
