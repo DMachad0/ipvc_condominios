@@ -16,30 +16,10 @@
 				</span>
 			</a>
 		</span>
-		<span id="trigger-search" class="toolbar-trigger toolbar-icon-bg ov-h">
-			<a data-toggle="tooltips" data-placement="right" title="Toggle Sidebar">
-				<span class="icon-bg">
-					<i class="material-icons">search</i>
-				</span>
-			</a>
-		</span>
-		<div id="search-box">
-			<input class="form-control" type="text" placeholder="Search..." id="search-input"></input>
-		</div>
+
 	</div><!-- logo-area -->
 
 	<ul class="nav navbar-nav toolbar pull-right">
-
-		<li class="toolbar-icon-bg appear-on-search ov-h" id="trigger-search-close">
-	        <a class="toggle-fullscreen"><span class="icon-bg">
-	        	<i class="material-icons">close</i>
-	        </span></i></a>
-	    </li>
-		<li class="toolbar-icon-bg hidden-xs" id="trigger-fullscreen">
-	        <a href="#" class="toggle-fullscreen"><span class="icon-bg">
-	        	<i class="material-icons">fullscreen</i>
-	        </span></i></a>
-	    </li>
 
    		<li class="dropdown toolbar-icon-bg">
 			<a href="#" class="hasnotifications dropdown-toggle" data-toggle='dropdown'><span class="icon-bg"><i class="material-icons">notifications</i></span><span class="badge badge-info"></span></a>
@@ -112,124 +92,19 @@
 				</div>
 			</div>
 		</li>
-
-        <li class="dropdown toolbar-icon-bg hidden-xs">
-			<a href="#" class="hasnotifications dropdown-toggle" data-toggle='dropdown'><span class="icon-bg"><i class="material-icons">mail</i></span><span
-			class="badge badge-info"></span></a>
-			<div class="dropdown-menu animated notifications">
-				<div class="topnav-dropdown-header">
-					<span>2 new messages</span>
-					
-				</div>
-				<div class="scroll-pane">
-					<ul class="media-list scroll-content">
-						<li class="media notification-message">
-							<a href="#">
-								<div class="media-left">
-									<img class="img-circle avatar" src="assets/demo/avatar/avatar_01.png" alt="" />
-								</div>
-								<div class="media-body">
-									<h4 class="notification-heading"><strong>Amy Green</strong> <span class="text-gray">‒ Integer vitae libero ac risus egestas placerat.</span></h4>
-									<span class="notification-time">2 mins ago</span>
-								</div>
-							</a>
-						</li>
-						<li class="media notification-message">
-							<a href="#">
-								<div class="media-left">
-									<img class="img-circle avatar" src="assets/demo/avatar/avatar_09.png" alt="" />
-								</div>
-								<div class="media-body">
-									<h4 class="notification-heading"><strong>Daniel Andrews</strong> <span class="text-gray">‒ Vestibulum commodo felis quis tortor</span></h4>
-									<span class="notification-time">40 mins ago</span>
-								</div>
-							</a>
-						</li>
-						<li class="media notification-message">
-							<a href="#">
-								<div class="media-left">
-									<img class="img-circle avatar" src="assets/demo/avatar/avatar_02.png" alt="" />
-								</div>
-								<div class="media-body">
-									<h4 class="notification-heading"><strong>Jane Simpson</strong> <span class="text-gray">‒ Fusce lobortis lorem at ipsum semper sagittis.</span></h4>
-									<span class="notification-time">6 hours ago</span>
-								</div>
-							</a>
-						</li>
-						<li class="media notification-message">
-							<a href="#">
-								<div class="media-left">
-									<img class="img-circle avatar" src="assets/demo/avatar/avatar_03.png" alt="" />
-								</div>
-								<div class="media-body">
-									<h4 class="notification-heading"><strong>Harold Hawkins</strong> <span class="text-gray">‒ Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</span></h4>
-									<span class="notification-time">8 days ago</span>
-								</div>
-							</a>
-						</li>
-						<li class="media notification-message">
-							<a href="#">
-								<div class="media-left">
-									<img class="img-circle avatar" src="assets/demo/avatar/avatar_04.png" alt="" />
-								</div>
-								<div class="media-body">
-									<h4 class="notification-heading"><strong>Brian Fisher</strong> <span class="text-gray">‒ Praesent dapibus, neque id cursus faucibus.</span></h4>
-									<span class="notification-time">16 hours ago</span>
-								</div>
-							</a>
-						</li>
-						<li class="media notification-message">
-							<a href="#">
-								<div class="media-left">
-									<img class="img-circle avatar" src="assets/demo/avatar/avatar_05.png" alt="" />
-								</div>
-								<div class="media-body">
-									<h4 class="notification-heading"><strong>Dylan Black</strong> <span class="text-gray">‒ Pellentesque fermentum dolor. </span></h4>
-									<span class="notification-time">2 days ago</span>
-								</div>
-							</a>
-						</li>
-						<li class="media notification-message">
-							<a href="#">
-								<div class="media-left">
-									<img class="img-circle avatar" src="assets/demo/avatar/avatar_06.png" alt="" />
-								</div>
-								<div class="media-body">
-									<h4 class="notification-heading"><strong>Bobby Harper</strong> <span class="text-gray">‒ Sed adipiscing ornare risus. Morbi est est.</span></h4>
-									<span class="notification-time">4 days ago</span>
-								</div>
-							</a>
-						</li>
-					</ul>
-				</div>
-				<div class="topnav-dropdown-footer">
-					<a href="#">See all messages</a>
-				</div>
-			</div>
-		</li>
-
-		<li class="toolbar-icon-bg" id="trigger-infobar">
-			<a data-toggle="tooltips" data-placement="right" title="Toggle Sidebar">
-				<span class="icon-bg">
-					<i class="material-icons">more_vert</i>
-				</span>
-			</a>
-		</li>
-
 		
-		<li style="height: 64px;transition-duration: 300ms;color:#757575">
+		<li class="dropdown" style="height: 64px;transition-duration: 300ms;color:#757575">
 			<a href="#" class="dropdown-toggle" data-toggle='dropdown'>{{ Auth::user()->name }} <span class="icon-bg"><i class="material-icons">settings</i></span><span
 			class="badge badge-info"></span></a>
 			<div class="dropdown-menu animated notifications">
 				<div class="topnav-dropdown-header">
-				<span>Definições da Conta</span>
-				
+					<span>Definições da Conta</span>
 				</div>
 				<div class="topnav-dropdown-footer">
-					<a href="#">Mudar Password</a>
+					<a href="/forgot-password">Mudar Password</a>
 				</div>
 				<div class="topnav-dropdown-footer">
-					<a href="/signout">Sair da Conta</a>
+					<a style="color:red;" href="/signout">Sair da Conta</a>
 				</div>
 			</div>
 		</li>
