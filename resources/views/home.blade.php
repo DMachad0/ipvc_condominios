@@ -127,9 +127,9 @@
                                 <td>JOAO AFONSO</td>
                                 <td>Rua do Antonio</td>
                                 <td>+351 919919919</td>
-                                <td width=11%><div class="btn-group dropdown">
-                                        <button class="btn btn-success btn-raised">Detalhes</button>
-                                        <button class="btn btn-success btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                                <td ><div class="btn-group dropdown">
+                                        <button class="btn btn-xs btn-success btn-raised">Detalhes</button>
+                                        <button class="btn btn-xs btn-success btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
                                         <ul class="dropdown-menu" role="menu">
                                             <li><a href="">Editar</a></li>
                                         </ul>
@@ -141,8 +141,8 @@
                                 <td>Rua do Joao</td>
                                 <td>+351 929929929</td>
                                 <td><div class="btn-group dropdown">
-                                        <button class="btn btn-success btn-raised">Detalhes</button>
-                                        <button class="btn btn-success btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                                        <button class="btn btn-xs btn-success btn-raised">Detalhes</button>
+                                        <button class="btn btn-xs btn-success btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
                                         <ul class="dropdown-menu" role="menu">
                                             <li><a href="">Editar</a></li>
                                         </ul>
