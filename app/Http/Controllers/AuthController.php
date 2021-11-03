@@ -60,9 +60,12 @@ class AuthController extends Controller
     public function create(array $data)
     {
       return User::create([
-        'name' => $data['name'],
+        'nome' => $data['name'],
         'email' => $data['email'],
-        'password' => Hash::make($data['password'])
+        'password' => Hash::make($data['password']),
+        'telefone' => $data['email'],
+        'cc' => $data['email'],
+        'tipo' => 'prop',
       ]);
     }    
     

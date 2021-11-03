@@ -94,7 +94,7 @@
 		</li>
 		
 		<li class="dropdown" style="height: 64px;transition-duration: 300ms;color:#757575">
-			<a href="#" class="dropdown-toggle" data-toggle='dropdown'>{{ Auth::user()->name }} <span class="icon-bg"><i class="material-icons">settings</i></span><span
+			<a href="#" class="dropdown-toggle" data-toggle='dropdown'>{{ Auth::user()->nome }} <span class="icon-bg"><i class="material-icons">settings</i></span><span
 			class="badge badge-info"></span></a>
 			<div class="dropdown-menu animated notifications">
 				<div class="topnav-dropdown-header">
