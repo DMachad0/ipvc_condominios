@@ -15,6 +15,9 @@ class CreateCondominios extends Migration
     {
         Schema::create('condominios', function (Blueprint $table) {
             $table->id();
+            $table->string('nome');
+            $table->string('telefone');
+            $table->string('cp');
             $table->timestamps();
         });
     }

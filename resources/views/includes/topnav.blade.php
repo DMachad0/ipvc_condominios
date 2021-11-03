@@ -3,10 +3,10 @@
 
 	<div class="logo-area">
 		<a class="navbar-brand navbar-brand-primary" href="#">
-			<img class="show-on-collapse img-logo-white" alt="Paper" src="assets/img/logo-icon-white.png">
-			<img class="show-on-collapse img-logo-dark" alt="Paper" src="assets/img/logo-icon-dark.png">
-			<img class="img-white" alt="Paper" src="assets/img/logo-white.png">
-			<img class="img-dark" alt="Paper" src="assets/img/logo-dark.png">
+			<img class="show-on-collapse img-logo-white" alt="Paper" src="favicon.png">
+			<img class="show-on-collapse img-logo-dark" alt="Paper" src="favicon.png">
+			<img class="img-white" alt="Paper" src="favicon.png">
+			<img class="img-dark" alt="Paper" src="favicon.png">
 		</a>
 
 		<span id="trigger-sidebar" class="toolbar-trigger toolbar-icon-bg stay-on-search">
