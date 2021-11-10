@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UtilizadoresController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +29,6 @@ Route::post('forgot-password', [AuthController::class, 'confirmarEsquecerPw'])->
 
 Route::get('reset-password/{token}', [AuthController::class, 'resetPw'])->name('password.reset');
 Route::post('reset-password',[AuthController::class, 'confirmarResetPw'])->name('password.update');
+
+
+Route::get('utilizadores', [UtilizadoresController::class, 'utilizadores'])->name('utilizadores');
