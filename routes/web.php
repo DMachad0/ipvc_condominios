@@ -31,4 +31,4 @@ Route::get('reset-password/{token}', [AuthController::class, 'resetPw'])->name('
 Route::post('reset-password',[AuthController::class, 'confirmarResetPw'])->name('password.update');
 
 
-Route::get('utilizadores', [UtilizadoresController::class, 'utilizadores'])->name('utilizadores');
+Route::get('utilizadores', [UtilizadoresController::class, 'adminHome'])->name('adminHome');

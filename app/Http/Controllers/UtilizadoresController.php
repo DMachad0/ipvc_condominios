@@ -7,10 +7,10 @@ use Illuminate\Support\Facades\Auth;
 
 class UtilizadoresController extends Controller
 {
-    public function utilizadores()
+    public function adminHome()
     {
         if(Auth::check()){
-            return view('utilizadores.home');
+            return view('admin.utilizadores');
         }
   
         return redirect("login");  
