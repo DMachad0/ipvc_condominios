@@ -70,14 +70,14 @@
 					<!-- <div class="panel-ctrls" data-actions-container="" data-action-collapse='{"target": ".panel-body, .panel-footer"}'></div> -->
 					<div class="options">
 						<ul class="nav nav-tabs">
-			              <li><a href="#todos" data-toggle="tab">Todos</a></li>
-			              <li class="active"><a href="#pendentes" data-toggle="tab">Pendentes</a></li>
+			              <li><a href="#Utilizadores" data-toggle="tab">Utilizadores</a></li>
+			              <li class="active"><a href="#Administradores_Condomínios" data-toggle="tab">Administradores de Condomínios</a></li>
 			            </ul>
 					</div>
 				</div>
 				<div class="panel-body">
 					<div class="tab-content">
-						<div class="tab-pane active" id="pendentes">
+						<div class="tab-pane active" id="Administradores_Condomínios">
 						<div class="row">
 		<div class="col-md-12">
 			<div class="panel panel-default">
@@ -101,10 +101,10 @@
                                 <td>Rua do Antonio</td>
                                 <td>+351 919919919</td>
                                 <td ><div class="btn-group dropdown">
-                                        <button class="btn btn-xs btn-success btn-raised">Detalhes</button>
+                                        <button class="btn btn-xs btn-success btn-raised">Aceitar</button>
                                         <button class="btn btn-xs btn-success btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
                                         <ul class="dropdown-menu" role="menu">
-                                            <li><a href="">Editar</a></li>
+                                            <li><a href="">Recusar</a></li>
                                         </ul>
                                     </div></td>
                             </tr>
@@ -114,10 +114,10 @@
                                 <td>Rua do Joao</td>
                                 <td>+351 929929929</td>
                                 <td><div class="btn-group dropdown">
-                                        <button class="btn btn-xs btn-success btn-raised">Detalhes</button>
+                                        <button class="btn btn-xs btn-success btn-raised">Aceitar</button>
                                         <button class="btn btn-xs btn-success btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
                                         <ul class="dropdown-menu" role="menu">
-                                            <li><a href="">Editar</a></li>
+                                            <li><a href="">Recusar</a></li>
                                         </ul>
                                     </div></td>
                             </tr>
@@ -129,7 +129,7 @@
 		</div>
 	</div>
 						</div>
-						<div class="tab-pane" id="todos">
+						<div class="tab-pane" id="Utilizadores">
 						<div class="row">
 		<div class="col-md-12">
 			<div class="panel panel-default">
