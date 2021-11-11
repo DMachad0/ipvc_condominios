@@ -58,8 +58,10 @@
                            </div>
 								<div class="container-fluid">
 									<div data-widget-group="group1">
+										<button class="btn btn-primary btn-raised pull-right">+ NOVO UTILIZADOR</button>
 										<div class="row">
 											<div class="col-sm-12">
+											
 												<div class="panel panel-primary" data-widget='{"draggable": "false"}'>
 													<div class="panel-heading">
 														<h2>Utilizadores</h2>
@@ -214,15 +216,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="infobar-wrapper scroll-pane">
-            <div class="infobar scroll-content">
-
-    
-    
-
-</div>
         </div>
         <!-- Load site level scripts -->
 
