@@ -78,7 +78,7 @@ class AuthController extends Controller
                 return view('props.home');
             } elseif ($user->tipo == "adm") {
                 return view('admin.home');
-            } elseif ($user->tipo == "adm_condm") {
+            } elseif ($user->tipo == "adm_cond") {
                 return view('admin_cond.home');
             } 
         }
