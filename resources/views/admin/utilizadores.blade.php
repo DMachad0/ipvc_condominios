@@ -50,155 +50,168 @@
                     <div class="static-content">
                         <div class="page-content">
                             <ol class="breadcrumb">
-                                
-<li class=""><a href="#">Utilizadores</a></li>
+								<li class=""><a href="#">Utilizadores</a></li>
                             </ol>
                             <div class="page-heading">            
                                <h1>Utilizadores</h1>
-                               <div class="options">
-</div>
+                               <div class="options"></div>
                            </div>
-                            <div class="container-fluid">
-                                
-
-                            <div data-widget-group="group1">
-	<div class="row">
-		<div class="col-sm-12">
-			<div class="panel panel-primary" data-widget='{"draggable": "false"}'>
-				<div class="panel-heading">
-					<h2>Utilizadores</h2>
-					<!-- <div class="panel-ctrls" data-actions-container="" data-action-collapse='{"target": ".panel-body, .panel-footer"}'></div> -->
-					<div class="options">
-						<ul class="nav nav-tabs">
-			              <li><a href="#Utilizadores" data-toggle="tab">Utilizadores</a></li>
-			              <li class="active"><a href="#Administradores_Condomínios" data-toggle="tab">Administradores de Condomínios</a></li>
-			            </ul>
-					</div>
-				</div>
-				<div class="panel-body">
-					<div class="tab-content">
-						<div class="tab-pane active" id="Administradores_Condomínios">
-						<div class="row">
-		<div class="col-md-12">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h2>Clientes</h2>
-					<div class="panel-ctrls"></div>
-				</div>
-				<div class="panel-body no-padding">
-					<table class="table table-striped table-bordered" cellspacing="0" width="100%">
-						<thead>
-							<tr>
-								<th>Cliente</th>
-								<th>Morada</th>
-								<th>Telefone</th>
-								<th>Ações</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-                                <td>JOAO AFONSO</td>
-                                <td>Rua do Antonio</td>
-                                <td>+351 919919919</td>
-                                <td ><div class="btn-group dropdown">
-                                        <button class="btn btn-xs btn-success btn-raised">Aceitar</button>
-                                        <button class="btn btn-xs btn-success btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a href="">Recusar</a></li>
-                                        </ul>
-                                    </div></td>
-                            </tr>
-
-                            <tr>
-                                <td>MARIA AFONSO</td>
-                                <td>Rua do Joao</td>
-                                <td>+351 929929929</td>
-                                <td><div class="btn-group dropdown">
-                                        <button class="btn btn-xs btn-success btn-raised">Aceitar</button>
-                                        <button class="btn btn-xs btn-success btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a href="">Recusar</a></li>
-                                        </ul>
-                                    </div></td>
-                            </tr>
-						</tbody>
-					</table>
-				</div>
-				<div class="panel-footer"></div>
-			</div>
-		</div>
-	</div>
-						</div>
-						<div class="tab-pane" id="Utilizadores">
-						<div class="row">
-		<div class="col-md-12">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h2>Clientes</h2>
-					<div class="panel-ctrls"></div>
-				</div>
-				<div class="panel-body no-padding">
-					<table class="table table-striped table-bordered" cellspacing="0" width="100%">
-						<thead>
-							<tr>
-								<th>Cliente</th>
-								<th>Morada</th>
-								<th>Telefone</th>
-								<th>Ações</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-                                <td>JOAO AFONSO</td>
-                                <td>Rua do Antonio</td>
-                                <td>+351 919919919</td>
-                                <td ><div class="btn-group dropdown">
-                                        <button class="btn btn-xs btn-success btn-raised">Detalhes</button>
-                                        <button class="btn btn-xs btn-success btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a href="">Editar</a></li>
-                                        </ul>
-                                    </div></td>
-                            </tr>
-
-                            <tr>
-                                <td>MARIA AFONSO</td>
-                                <td>Rua do Joao</td>
-                                <td>+351 929929929</td>
-                                <td><div class="btn-group dropdown">
-                                        <button class="btn btn-xs btn-success btn-raised">Detalhes</button>
-                                        <button class="btn btn-xs btn-success btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a href="">Editar</a></li>
-                                        </ul>
-                                    </div></td>
-                            </tr>
-						</tbody>
-					</table>
-				</div>
-				<div class="panel-footer"></div>
-			</div>
-		</div>
-	</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
+								<div class="container-fluid">
+									<div data-widget-group="group1">
+										<div class="row">
+											<div class="col-sm-12">
+												<div class="panel panel-primary" data-widget='{"draggable": "false"}'>
+													<div class="panel-heading">
+														<h2>Utilizadores</h2>
+														<!-- <div class="panel-ctrls" data-actions-container="" data-action-collapse='{"target": ".panel-body, .panel-footer"}'></div> -->
+														<div class="options">
+															<ul class="nav nav-tabs">
+															<li><a href="#proprietarios" data-toggle="tab">Proprietários</a></li>
+															<li><a href="#administradores_condominios" data-toggle="tab">Administradores de Condomínios</a></li>
+															<li class="active"><a href="#administradores_plataforma" data-toggle="tab">Administradores da Plataforma</a></li>
+															</ul>
+														</div>
+													</div>
+													<div class="panel-body">
+														<div class="tab-content">
+															<div class="tab-pane" id="administradores_condominios">
+																<div class="row">
+																	<div class="col-md-12">
+																		<div class="panel panel-default">
+																			<div class="panel-heading">
+																				<h2>Administradores de Condomínios</h2>
+																				<div class="panel-ctrls"></div>
+																			</div>
+																			<div class="panel-body no-padding">
+																				<table class="table table-striped table-bordered" cellspacing="0" width="100%">
+																					<thead>
+																						<tr>
+																							<th>Nome</th>
+																							<th>E-Mail</th>
+																							<th>Telefone</th>
+																							<th>Ações</th>
+																						</tr>
+																					</thead>
+																					<tbody>
+																						@foreach ($users as $user)
+																							@if ($user->tipo == "adm_cond")
+																							<tr>
+																								<td>{{ $user->nome }}</td>
+																								<td>{{ $user->email }}</td>
+																								<td>{{ $user->telefone }}</td>
+																								<td ><div class="btn-group dropdown">
+																										<button class="btn btn-xs btn-success btn-raised">Detalhes</button>
+																										<button class="btn btn-xs btn-success btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+																										<ul class="dropdown-menu" role="menu">
+																											<li><a href="">Editar</a></li>
+																										</ul>
+																									</div></td>
+																							</tr>
+																							@endif
+																						@endforeach
+																					</tbody>
+																				</table>
+																			</div>
+																			<div class="panel-footer"></div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="tab-pane active" id="administradores_plataforma">
+																<div class="row">
+																	<div class="col-md-12">
+																		<div class="panel panel-default">
+																			<div class="panel-heading">
+																				<h2>Administradores da Plataforma</h2>
+																				<div class="panel-ctrls"></div>
+																			</div>
+																			<div class="panel-body no-padding">
+																				<table class="table table-striped table-bordered" cellspacing="0" width="100%">
+																					<thead>
+																						<tr>
+																							<th>Nome</th>
+																							<th>E-Mail</th>
+																							<th>Telefone</th>
+																							<th>Ações</th>
+																						</tr>
+																					</thead>
+																					<tbody>
+																						@foreach ($users as $user)
+																							@if ($user->tipo == "adm")
+																							<tr>
+																								<td>{{ $user->nome }}</td>
+																								<td>{{ $user->email }}</td>
+																								<td>{{ $user->telefone }}</td>
+																								<td ><div class="btn-group dropdown">
+																										<button class="btn btn-xs btn-success btn-raised">Detalhes</button>
+																										<button class="btn btn-xs btn-success btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+																										<ul class="dropdown-menu" role="menu">
+																											<li><a href="">Editar</a></li>
+																										</ul>
+																									</div></td>
+																							</tr>
+																							@endif
+																						@endforeach
+																					</tbody>
+																				</table>
+																			</div>
+																			<div class="panel-footer"></div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														<div class="tab-pane" id="proprietarios">
+															<div class="row">
+																<div class="col-md-12">
+																	<div class="panel panel-default">
+																		<div class="panel-heading">
+																			<h2>Proprietários</h2>
+																			<div class="panel-ctrls"></div>
+																		</div>
+																		<div class="panel-body no-padding">
+																			<table class="table table-striped table-bordered" cellspacing="0" width="100%">
+																				<thead>
+																					<tr>
+																						<th>Nome</th>
+																						<th>E-Mail</th>
+																						<th>Telefone</th>
+																						<th>Ações</th>
+																					</tr>
+																				</thead>
+																				<tbody>
+																				@foreach ($users as $user)
+																						@if ($user->tipo == "prop")
+																						<tr>
+																							<td>{{ $user->nome }}</td>
+																							<td>{{ $user->email }}</td>
+																							<td>{{ $user->telefone }}</td>
+																							<td ><div class="btn-group dropdown">
+																									<button class="btn btn-xs btn-success btn-raised">Detalhes</button>
+																									<button class="btn btn-xs btn-success btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+																									<ul class="dropdown-menu" role="menu">
+																										<li><a href="">Editar</a></li>
+																									</ul>
+																								</div></td>
+																						</tr>
+																						@endif
+																					@endforeach
+																				</tbody>
+																			</table>
+																		</div>
+																		<div class="panel-footer"></div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
                             </div> <!-- .container-fluid -->
                         </div> <!-- #page-content -->
                     </div>
-                    <footer role="contentinfo">
-                        <div class="clearfix">
-                            <ul class="list-unstyled list-inline pull-left">
-                                <li><h6 style="margin: 0;">&copy; 2021</h6></li>
-                            </ul>
-                        </div>
-                    </footer>
-
                 </div>
             </div>
         </div>

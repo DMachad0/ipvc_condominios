@@ -73,7 +73,14 @@ class AuthController extends Controller
     public function dashboard()
     {
         if(Auth::check()){
-            return view('home');
+            $user = Auth::user();
+            if ($user->tipo == "prop") {
+                return view('props.home');
+            } elseif ($user->tipo == "adm") {
+                return view('admin.home');
+            } elseif ($user->tipo == "ad_condm") {
+                return view('admin_cond.home');
+            } 
         }
   
         return redirect("login");
