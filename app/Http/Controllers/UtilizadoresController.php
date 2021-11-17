@@ -18,4 +18,18 @@ class UtilizadoresController extends Controller
   
         return redirect("login");  
     }   
+
+    public function adminNewUser()
+    {
+        if(Auth::check()){
+            $user = Auth::user();
+            if ($user->tipo == "adm") {
+                return view('admin.novo_utilizador');
+            } else {
+                return redirect("/");
+            }
+        }
+  
+        return redirect("login");  
+    }   
 }

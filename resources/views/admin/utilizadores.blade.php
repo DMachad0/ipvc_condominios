@@ -58,7 +58,7 @@
                            </div>
 								<div class="container-fluid">
 									<div data-widget-group="group1">
-										<button class="btn btn-primary btn-raised pull-right">+ NOVO UTILIZADOR</button>
+										<a href="/utilizadores/novo" class="btn btn-primary btn-raised pull-right">+ NOVO UTILIZADOR</a>
 										<div class="row">
 											<div class="col-sm-12">
 											
