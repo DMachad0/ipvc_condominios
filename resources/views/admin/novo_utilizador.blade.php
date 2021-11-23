@@ -58,7 +58,8 @@
 					<h2>Novo Utilizador</h2>
 				</div>
 				<div class="panel-body">
-					<form class="grid-form">
+				<form method="POST" class="grid-form" action="{{ route('confirmarNovoUtilizador') }}">    
+                        @csrf	
 						<fieldset>
 							<legend>Dados Pessoais</legend>
 							<div data-row-span="1">
@@ -71,11 +72,11 @@
                             <div data-row-span="2">
                                 <div data-field-span="1">
 									<label>Cartão de Cidadão</label>
-									<input type="text" autofocus>
+									<input type="text" maxlength="8" autofocus>
 								</div>
                                 <div data-field-span="1">
 									<label>Telemovel</label>
-									<input type="text" autofocus>
+									<input type="text" maxlength="8" autofocus>
 								</div>
 							</div>
 						</fieldset>
