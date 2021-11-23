@@ -78,4 +78,9 @@ class UtilizadoresController extends Controller
             'tipo' => $data['tipo'],
         ]);
     }  
+
+    public function habitacoes()
+    {  
+        return view("admin_cond.habitacoes");  
+    }   
 }
