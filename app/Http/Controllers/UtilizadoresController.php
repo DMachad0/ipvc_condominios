@@ -82,5 +82,20 @@ class UtilizadoresController extends Controller
     public function habitacoes()
     {  
         return view("admin_cond.habitacoes");  
+    }
+
+    public function proprietarios()
+    {  
+        return view("admin_cond.proprietarios");  
+    }
+    
+    public function despesas()
+    {  
+        return view("admin_cond.despesas");  
+    }   
+
+    public function atas()
+    {  
+        return view("admin_cond.atas");  
     }   
 }

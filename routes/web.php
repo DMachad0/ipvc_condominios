@@ -36,3 +36,9 @@ Route::get('utilizadores/novo', [UtilizadoresController::class, 'adminNewUser'])
 Route::post('utilizadores/novo', [UtilizadoresController::class, 'confirmarNovoUtilizador'])->name('confirmarNovoUtilizador');
 
 Route::get('habitacoes', [UtilizadoresController::class, 'habitacoes'])->name('habitacoes');
+
+Route::get('proprietarios', [UtilizadoresController::class, 'proprietarios'])->name('proprietarios');
+
+Route::get('despesas', [UtilizadoresController::class, 'despesas'])->name('despesas');
+
+Route::get('atas', [UtilizadoresController::class, 'atas'])->name('atas');

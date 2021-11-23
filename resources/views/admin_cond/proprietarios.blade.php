@@ -47,10 +47,10 @@
                         <div class="static-content">
                             <div class="page-content">
                                 <ol class="breadcrumb">
-                                    <li class=""><a href="#">Habitações</a></li>
+                                    <li class=""><a href="#">Proprietários</a></li>
                                 </ol>
                                 <div class="page-heading">            
-                                <h1>Habitações</h1>
+                                <h1>Proprietários</h1>
                                 <div class="options"></div>
                             </div>
                             <div class="container-fluid">
@@ -59,7 +59,7 @@
                                             <div class="col-md-12">
                                                 <div class="panel panel-default">
                                                     <div class="panel-heading">
-                                                        <h2>Habitações</h2>
+                                                        <h2>Clientes</h2>
                                                         <div class="panel-ctrls"></div>
                                                     </div>
                                                     <div class="panel-body no-padding">
@@ -73,39 +73,28 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <tr>
-                                                                    <td>JOAO AFONSO</td>
-                                                                    <td>Rua do Antonio</td>
-                                                                    <td>2º Direito, Bloco C</td>
-                                                                    <td ><div class="btn-group dropdown">
-                                                                            <button class="btn btn-xs btn-success btn-raised">Detalhes</button>
-                                                                            <button class="btn btn-xs btn-success btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-                                                                            <ul class="dropdown-menu" role="menu">
-                                                                                <li><a href="">Editar</a></li>
-                                                                            </ul>
-                                                                        </div></td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>MARIA AFONSO</td>
-                                                                    <td>Rua do Joao</td>
-                                                                    <td>1º Direito, Bloco C</td>
-                                                                    <td><div class="btn-group dropdown">
-                                                                            <button class="btn btn-xs btn-success btn-raised">Detalhes</button>
-                                                                            <button class="btn btn-xs btn-success btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-                                                                            <ul class="dropdown-menu" role="menu">
-                                                                                <li><a href="">Editar</a></li>
-                                                                            </ul>
-                                                                        </div></td>
-                                                                </tr>
+                                                            @foreach ($users as $user)
+																@if ($user->tipo == "prop")
+                                                                    <tr>
+                                                                        <td>{{ $user->nome }}</td>
+                                                                        <td>{{ $habitacoes->morada }}</td>
+                                                                        <td>{{ $habitacoes->portaria }}</td>
+                                                                        <td ><div class="btn-group dropdown">
+                                                                                <button class="btn btn-xs btn-success btn-raised">Detalhes</button>
+                                                                                <button class="btn btn-xs btn-success btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                                                                                <ul class="dropdown-menu" role="menu">
+                                                                                    <li><a href="">Editar</a></li>
+                                                                                </ul>
+                                                                            </div></td>
+                                                                    </tr>
+                                                                @endif
+															@endforeach    
                                                             </tbody>
                                                         </table>
                                                     </div>
-                                                    <div class="panel-footer"></div>
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div> <!-- .container-fluid -->
                             </div> <!-- #page-content -->
