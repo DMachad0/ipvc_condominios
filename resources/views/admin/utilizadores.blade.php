@@ -57,6 +57,18 @@
                                <div class="options"></div>
                            </div>
 								<div class="container-fluid">
+								@foreach ($errors->all() as $error)
+									<div class="alert alert-dismissable alert-danger">
+										<i class="fa fa-close"></i>&nbsp; {{ $error }}
+										<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+									</div>
+								@endforeach
+								@if (Session::has('success'))
+									<div class="alert alert-dismissable alert-success">
+										<i class="fa fa-close"></i>&nbsp; {{ Session::get('success') }}
+										<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+									</div>
+								@endif
 									<div data-widget-group="group1">
 										<a href="/utilizadores/novo" class="btn btn-primary btn-raised pull-right">+ NOVO UTILIZADOR</a>
 										<div class="row">

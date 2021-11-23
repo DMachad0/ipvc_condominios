@@ -58,6 +58,18 @@
 					<h2>Novo Utilizador</h2>
 				</div>
 				<div class="panel-body">
+                @foreach ($errors->all() as $error)
+                    <div class="alert alert-dismissable alert-danger">
+                        <i class="fa fa-close"></i>&nbsp; {{ $error }}
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    </div>
+                @endforeach
+                @if (Session::has('success'))
+                    <div class="alert alert-dismissable alert-success">
+                        <i class="fa fa-close"></i>&nbsp; {{ Session::get('success') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    </div>
+                @endif
 				<form method="POST" class="grid-form" action="{{ route('confirmarNovoUtilizador') }}">    
                         @csrf	
 						<fieldset>
@@ -65,18 +77,18 @@
 							<div data-row-span="1">
 								<div data-field-span="1">
 									<label>Nome</label>
-									<input type="text" autofocus>
+									<input type="text" name="nome">
 								</div>
                                 
 							</div>
                             <div data-row-span="2">
                                 <div data-field-span="1">
 									<label>Cartão de Cidadão</label>
-									<input type="text" maxlength="8" autofocus>
+									<input type="text" name="cc" minlength="8" maxlength="8">
 								</div>
                                 <div data-field-span="1">
 									<label>Telemovel</label>
-									<input type="text" maxlength="8" autofocus>
+									<input type="text" name="telefone" minlength="9" maxlength="9">
 								</div>
 							</div>
 						</fieldset>
@@ -89,15 +101,15 @@
 							<div data-row-span="3">
                                 <div data-field-span="1">
 									<label>E-Mail</label>
-									<input type="email" autofocus>
+									<input type="email" name="email">
 								</div>
                                 <div data-field-span="1">
 									<label>Password</label>
-									<input type="text" value="Gerada no E-Mail" autofocus disabled>
+									<input type="password" name="password" value="Gerada no E-Mail" disabled>
 								</div>
                                 <div data-field-span="1">
 									<label>Tipo de Conta</label>
-									<select>
+									<select name="tipo">
 										<option value="prop">Proprietário</option>
 										<option value="adm_cond">Administrador de Condomínio</option>
 										<option value="adm">Administrador da Plataforma</option>

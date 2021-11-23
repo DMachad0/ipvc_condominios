@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Hash;
+use App\Models\User;
 
 class UtilizadoresController extends Controller
 {
@@ -33,17 +35,17 @@ class UtilizadoresController extends Controller
         return redirect("login");  
     }   
 
-    public function confirmarNovoUtilizador()
+    public function confirmarNovoUtilizador(Request $request)
     {
         if(Auth::check()){
             $user = Auth::user();
             if ($user->tipo == "adm") {
                 $request->validate([
-                    'name' => 'required',
+                    'nome' => 'required',
                     'email' => 'required|email|unique:users',
-                    'telefone' => 'required|min:9|max:9|confirmed',
-                    'cc' => 'required|min:8|max:8|confirmed',
-                    'tipo' => 'required|confirmed',
+                    'telefone' => 'required|min:9|max:9',
+                    'cc' => 'required|min:8|max:8',
+                    'tipo' => 'required',
                 ]);
                    
                 $data = $request->all();
@@ -60,13 +62,20 @@ class UtilizadoresController extends Controller
 
     public function create(array $data)
     {
-      return User::create([
-        'nome' => $data['name'],
-        'email' => $data['email'],
-        'password' => Hash::make($data['password']),
-        'telefone' => $data['email'],
-        'cc' => $data['email'],
-        'tipo' => 'prop',
-      ]);
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $pin = mt_rand(1000000, 9999999)
+            . mt_rand(1000000, 9999999)
+            . $characters[rand(0, strlen($characters) - 1)];
+
+        $password_generate = str_shuffle($pin);
+
+        return User::create([
+            'nome' => $data['nome'],
+            'email' => $data['email'],
+            'password' => Hash::make($password_generate),
+            'telefone' => $data['telefone'],
+            'cc' => $data['cc'],
+            'tipo' => $data['tipo'],
+        ]);
     }  
 }
