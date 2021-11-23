@@ -27,300 +27,109 @@
 
 </head>
 
-    <body class="animated-content infobar-overlay">
-         
+<body class="animated-content infobar-overlay">       
     @include('includes.topnav')
-
         <div id="wrapper">
             <div id="layout-static">
-
             @include('includes.sidenav')
-
                 <div class="static-content-wrapper">
                     <div class="static-content">
                         <div class="page-content">
-                            <ol class="breadcrumb">
-                                
-<li><a href="/utilizadores">Utilizadores</a></li>
-<li class="active"><a href="#">Novo Utilizador</a></li>
-
+                            <ol class="breadcrumb">                                
+                                <li><a href="/utilizadores">Utilizadores</a></li>
+                                <li class="active"><a href="#">Novo Utilizador</a></li>
                             </ol>
                             <div class="page-heading">
                                <h1>Novo Utilizador</h1>
-                           </div>
-                            <div class="container-fluid">
-                                 
-<div data-widget-group="group1">
-    <div class="row">
-    	<div class="col-md-12">
-			<div class="panel panel-white" data-widget='{"draggable": "false"}'>
 				<div class="panel-heading">
-					<h2>Novo Utilizador</h2>
-				</div>
-				<div class="panel-body">
-                @foreach ($errors->all() as $error)
-                    <div class="alert alert-dismissable alert-danger">
-                        <i class="fa fa-close"></i>&nbsp; {{ $error }}
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    </div>
-                @endforeach
-                @if (Session::has('success'))
-                    <div class="alert alert-dismissable alert-success">
-                        <i class="fa fa-close"></i>&nbsp; {{ Session::get('success') }}
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    </div>
-                @endif
-				<form method="POST" class="grid-form" action="{{ route('confirmarNovoUtilizador') }}">    
-                        @csrf	
-						<fieldset>
-							<legend>Dados Pessoais</legend>
-							<div data-row-span="1">
-								<div data-field-span="1">
-									<label>Nome</label>
-									<input type="text" name="nome">
-								</div>
-                                
-							</div>
-                            <div data-row-span="2">
-                                <div data-field-span="1">
-									<label>Cartão de Cidadão</label>
-									<input type="text" name="cc" minlength="8" maxlength="8">
-								</div>
-                                <div data-field-span="1">
-									<label>Telemovel</label>
-									<input type="text" name="telefone" minlength="9" maxlength="9">
-								</div>
-							</div>
-						</fieldset>
+                            </div>
+                                <div class="container-fluid">
+                                    <div data-widget-group="group1">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="panel panel-white" data-widget='{"draggable": "false"}'>
+                                                    <div class="panel-heading">
+                                                        <h2>Novo Utilizador</h2>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        @foreach ($errors->all() as $error)
+                                                            <div class="alert alert-dismissable alert-danger">
+                                                                <i class="fa fa-close"></i>&nbsp; {{ $error }}
+                                                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                                            </div>
+                                                        @endforeach
+                                                        @if (Session::has('success'))
+                                                            <div class="alert alert-dismissable alert-success">
+                                                                <i class="fa fa-close"></i>&nbsp; {{ Session::get('success') }}
+                                                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                                            </div>
+                                                        @endif
+                                                        <form method="POST" class="grid-form" action="{{ route('confirmarNovoUtilizador') }}">    
+                                                                @csrf	
+                                                                <fieldset>
+                                                                    <legend>Dados Pessoais</legend>
+                                                                    <div data-row-span="1">
+                                                                        <div data-field-span="1">
+                                                                            <label>Nome</label>
+                                                                            <input type="text" name="nome">
+                                                                        </div>
+                                                                        
+                                                                    </div>
+                                                                    <div data-row-span="2">
+                                                                        <div data-field-span="1">
+                                                                            <label>Cartão de Cidadão</label>
+                                                                            <input type="text" name="cc" minlength="8" maxlength="8">
+                                                                        </div>
+                                                                        <div data-field-span="1">
+                                                                            <label>Telemovel</label>
+                                                                            <input type="text" name="telefone" minlength="9" maxlength="9">
+                                                                        </div>
+                                                                    </div>
+                                                                </fieldset>
 
-						<br><br>
+                                                                <br><br>
 
-						<fieldset>
-							<legend>Dados da Conta</legend>
+                                                                <fieldset>
+                                                                    <legend>Dados da Conta</legend>
 
-							<div data-row-span="3">
-                                <div data-field-span="1">
-									<label>E-Mail</label>
-									<input type="email" name="email">
-								</div>
-                                <div data-field-span="1">
-									<label>Password</label>
-									<input type="password" name="password" value="Gerada no E-Mail" disabled>
-								</div>
-                                <div data-field-span="1">
-									<label>Tipo de Conta</label>
-									<select name="tipo">
-										<option value="prop">Proprietário</option>
-										<option value="adm_cond">Administrador de Condomínio</option>
-										<option value="adm">Administrador da Plataforma</option>
-									</select>
-								</div>
-							</div>
-							
-						</fieldset>
-						<div class="clearfix pt-md">
-							<div class="pull-right">
-								<button class="btn-raised btn-primary btn">Enviar</button>
-								<a href="/utilizadores" class="btn-default btn">Cancelar</a>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-	
-
-                            </div> <!-- .container-fluid -->
-                        </div> <!-- #page-content -->
-                    </div>
-
-                </div>
-                <div class="extrabar-underlay"></div>
+                                                                    <div data-row-span="3">
+                                                                        <div data-field-span="1">
+                                                                            <label>E-Mail</label>
+                                                                            <input type="email" name="email">
+                                                                        </div>
+                                                                        <div data-field-span="1">
+                                                                            <label>Password</label>
+                                                                            <input type="password" name="password" value="Gerada no E-Mail" disabled>
+                                                                        </div>
+                                                                        <div data-field-span="1">
+                                                                            <label>Tipo de Conta</label>
+                                                                            <select name="tipo">
+                                                                                <option value="prop">Proprietário</option>
+                                                                                <option value="adm_cond">Administrador de Condomínio</option>
+                                                                                <option value="adm">Administrador da Plataforma</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                </fieldset>
+                                                                <div class="clearfix pt-md">
+                                                                    <div class="pull-right">
+                                                                        <button class="btn-raised btn-primary btn">Enviar</button>
+                                                                        <a href="/utilizadores" class="btn-default btn">Cancelar</a>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                    </div> <!-- .container-fluid -->
+                </div> <!-- #page-content -->
             </div>
         </div>
-
-        <div class="infobar-wrapper scroll-pane">
-            <div class="infobar scroll-content">
-
-    
-        <ul class="nav nav-tabs material-nav-tabs stretch-tabs icon-tabs">
-            <li ><a href="#tab-7-1" data-toggle="tab">
-                <i class="material-icons">settings</i>
-            </a></li>
-            <li class="active "><a href="#tab-7-2" data-toggle="tab"><span class="step size-64">
-                  <i class="material-icons">textsms</i>
-                </span></a>
-            </li>
-        </ul>
-    
-
-    <div class="tab-content">
-        <div class="tab-pane" id="tab-7-1">
-
-            <table class="table table-settings">
-                <tbdody>
-                    <tr>
-                        <td>
-                            <h5>Alerts</h5>
-                            <p>Sets alerts to get notified when changes occur to get new alerming items</p>
-                        </td>
-                        <td><span class="togglebutton toggle-info"><label><input type="checkbox"> </label></span></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h5>Notifications</h5>
-                            <p>You will receive notification email for any notifications if you set notification</p>
-                        </td>
-                        <td><span class="togglebutton toggle-primary"><label><input type="checkbox" class="toggle"  checked=""> </label></span></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h5>Messages</h5>
-                            <p>You will receive notification on email after setting messages notifications</p>                            
-                        </td>
-                        <td>
-                            <span class="togglebutton toggle-danger"><label><input type="checkbox" > </label></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h5>Warnings</h5>
-                            <p>You will get warnning only some specific setttings or alert system</p>
-                        </td>
-                        <td>
-                            <span class="togglebutton toggle-warning"><label><input type="checkbox" checked=""> </label></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h5>Sidebar</h5>
-                            <p>You can hide/show use with sidebar collapsw settings</p>
-                        </td>
-                        <td><span class="togglebutton toggle-success"><label><input type="checkbox" checked=""> </label></span></td>
-                    </tr>
-                </tbdody>
-            </table>
-
-        </div>
-        <div class="tab-pane active" id="tab-7-2">
-
-            <div class="widget">
-                <div class="widget-heading">Recent Activities</div>
-                <div class="widget-body">
-                    <ul class="timeline">
-                        <li class="timeline-purple">
-                            <div class="timeline-icon"><i class="material-icons">add</i></div>
-                            <div class="timeline-body">
-                                <div class="timeline-header">
-                                    <span class="author">Jana Pena is now Follwing you</span>
-                                    <span class="date">2 min ago</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-primary">
-                            <div class="timeline-icon"><i class="material-icons">textsms</i></div>
-                            <div class="timeline-body">
-                                <div class="timeline-header">
-                                    <span class="author">Percy liaye Like your picture</span>
-                                    <span class="date">6 min ago</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-green">
-                            <div class="timeline-icon"><i class="material-icons">done</i></div>
-                            <div class="timeline-body">
-                                <div class="timeline-header">
-                                    <span class="author">Leon miles make your presentation for new project</span>
-                                    <span class="date">2 hours ago</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-danger">
-                            <div class="timeline-icon"><i class="material-icons">favorite</i></div>
-                            <div class="timeline-body">
-                                <div class="timeline-header">
-                                    <span class="author">Lake wile like your comment</span>
-                                    <span class="date">5 hours ago</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-sky">
-                            <div class="timeline-icon"><i class="material-icons">attach_money</i></div>
-                            <div class="timeline-body">
-                                <div class="timeline-header">
-                                    <span class="author">The Mountain Ambience paid your payment</span>
-                                    <span class="date">9 hours ago</span>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="widget">
-                <div class="widget-heading">Contacts</div>
-                <div class="widget-body">
-                    <ul class="media-list contacts">
-                        <li class="media notification-message">
-                            <div class="media-left">
-                                <img class="img-circle avatar" src="assets/demo/avatar/avatar_01.png" alt="" />
-                            </div>
-                            <div class="media-body">
-                              <span class="text-gray">Jon Owens</span>
-                                <span class="contact-status text-success">Online</span>
-                            </div>
-                        </li>
-                        <li class="media notification-message">
-                            <div class="media-left">
-                                <img class="img-circle avatar" src="assets/demo/avatar/avatar_02.png" alt="" />
-                            </div>
-                            <div class="media-body">
-                                <span class="text-gray">Nina Huges</span>
-                                <span class="contact-status text-muted">Offline</span>
-                            </div>
-                        </li>
-                        <li class="media notification-message">
-                            <div class="media-left">
-                                <img class="img-circle avatar" src="assets/demo/avatar/avatar_03.png" alt="" />
-                            </div>
-                            <div class="media-body">
-                                <span class="text-gray">Austin Lee</span>
-                                <span class="contact-status text-danger">Busy</span>
-                            </div>
-                        </li>
-                        <li class="media notification-message">
-                            <div class="media-left">
-                                <img class="img-circle avatar" src="assets/demo/avatar/avatar_04.png" alt="" />
-                            </div>
-                            <div class="media-body">
-                                <span class="text-gray">Grady Hines</span>
-                                <span class="contact-status text-warning">Away</span>
-                            </div>
-                        </li>
-                        <li class="media notification-message">
-                            <div class="media-left">
-                                <img class="img-circle avatar" src="assets/demo/avatar/avatar_06.png" alt="" />
-                            </div>
-                            <div class="media-body">
-                                <span class="text-gray">Adrian Barton</span>
-                                <span class="contact-status text-success">Online</span>
-                            </div>
-                        </li>
-                    </ul>                                
-                </div>
-            </div>
-
-
-            </div>
-        </div>
-
     </div>
-
 </div>
-        </div>
-
     
     <!-- Load site level scripts -->
 
