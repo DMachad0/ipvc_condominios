@@ -47,65 +47,60 @@
                         <div class="static-content">
                             <div class="page-content">
                                 <ol class="breadcrumb">
-                                    <li class=""><a href="#">Habitações</a></li>
+                                    <li class=""><a href="#">Atas</a></li>
                                 </ol>
                                 <div class="page-heading">            
-                                <h1>Habitações</h1>
+                                <h1>Atas</h1>
                                 <div class="options"></div>
                             </div>
-                            <div class="container-fluid">
-                                    <div data-widget-group="group1">                                   
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="panel panel-default">
-                                                    <div class="panel-heading">
-                                                        <h2>Habitações</h2>
-                                                        <div class="panel-ctrls"></div>
+                            <div class="col-md-9">
+                                <div class="panel panel-inbox" style="visibility: visible; opacity: 1; display: block; transform: translateY(0px);">
+                                    <div class="panel-body">
+                                        <div class="inbox-mail-heading">
+                                            <div class="clearfix">
+                                                <div class="pull-left">
+                                                    <a href="app-inbox.html" class="btn btn-lg btn-default"><i class="fa fa-arrow-left"></i></a>
+                                                    <div class="btn-group">
+                                                        <a href="#" class="btn btn-lg btn-default"><i class="fa fa-save"></i></a>
+                                                        <a href="#" class="btn btn-lg btn-default"><i class="fa fa-trash"></i></a>
                                                     </div>
-                                                    <div class="panel-body no-padding">
-                                                        <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>Proprietário</th>
-                                                                    <th>Morada</th>
-                                                                    <th>Portaria</th>
-                                                                    <th>Ações</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td>JOAO AFONSO</td>
-                                                                    <td>Rua do Antonio</td>
-                                                                    <td>2º Direito, Bloco C</td>
-                                                                    <td ><div class="btn-group dropdown">
-                                                                            <button class="btn btn-xs btn-success btn-raised">Detalhes</button>
-                                                                            <button class="btn btn-xs btn-success btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-                                                                            <ul class="dropdown-menu" role="menu">
-                                                                                <li><a href="">Editar</a></li>
-                                                                            </ul>
-                                                                        </div></td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>MARIA AFONSO</td>
-                                                                    <td>Rua do Joao</td>
-                                                                    <td>1º Direito, Bloco C</td>
-                                                                    <td><div class="btn-group dropdown">
-                                                                            <button class="btn btn-xs btn-success btn-raised">Detalhes</button>
-                                                                            <button class="btn btn-xs btn-success btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-                                                                            <ul class="dropdown-menu" role="menu">
-                                                                                <li><a href="">Editar</a></li>
-                                                                            </ul>
-                                                                        </div></td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                    <div class="panel-footer"></div>
+                                                </div>
+                                                <div class="pull-right">
+                                                    <a href="#" class="btn btn-lg btn-success btn-raised"><i class="fa fa-arrow-right visible-xs"></i><span class="hidden-xs">Send</span></a>
                                                 </div>
                                             </div>
                                         </div>
-
+                                        <form action="" role="form" id="inbox-compose-form" class="form-horizontal p-md">
+                                            <div class="form-group mb-sm">
+                                                <div class="col-md-12">
+                                                    <div class="input-group input-group-lg">
+                                                        <span class="input-group-addon">To:</span>
+                                                        <input type="text" class="form-control input-lg" value="" id="tokenfield-email">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group mb-sm" style="display:none;">
+                                                <div class="col-md-12"><input type="text" class="form-control"></div>
+                                            </div>
+                                            <div class="form-group mb-sm">
+                                                <div class="col-md-12"><input type="text" class="form-control input-lg" placeholder="Subject for email"></div>
+                                            </div>
+                                            <div class="form-group mb-n">
+                                                <div class="col-xs-12">
+                                                    <div class="composer">
+                                                        <h4>Default Editor</h4>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, nobis laboriosam repellat ipsum deserunt voluptate eos praesentium atque eligendi libero. Nam, id, eligendi natus facilis ullam pariatur numquam amet illum repudiandae ex porro labore in perferendis vero nobis iure ratione? Repudiandae, vel, quo, dolores velit vero debitis sed non odio culpa quasi excepturi tempore saepe atque quod repellendus aliquam eum neque dolorem beatae veniam quis id deserunt dignissimos voluptatum incidunt necessitatibus inventore reprehenderit consequatur esse perferendis ipsum earum pariatur et eaque sequi a harum sit similique itaque dicta expedita unde. Animi, quo, facilis laudantium quas commodi aut harum reprehenderit explicabo.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <div class="inbox-mail-footer">
+                                            <div class="clearfix">
+                                                <div class="pull-right">
+                                                    <a href="#" class="btn btn-lg btn-success btn-raised"><i class="fa fa-arrow-right visible-xs"></i><span class="hidden-xs">Send</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
