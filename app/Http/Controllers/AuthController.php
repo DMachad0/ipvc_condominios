@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
@@ -77,7 +78,8 @@ class AuthController extends Controller
             if ($user->tipo == "prop") {
                 return view('props.home');
             } elseif ($user->tipo == "adm") {
-                return view('admin.home');
+                $users = DB::table('users')->get();
+                return view('admin.home', ['users' => $users]);
             } elseif ($user->tipo == "adm_cond") {
                 return view('admin_cond.home');
             } 

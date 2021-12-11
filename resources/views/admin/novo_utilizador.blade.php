@@ -41,7 +41,6 @@
                             </ol>
                             <div class="page-heading">
                                <h1>Novo Utilizador</h1>
-				<div class="panel-heading">
                             </div>
                                 <div class="container-fluid">
                                     <div data-widget-group="group1">
@@ -115,7 +114,7 @@
                                                                 <div class="clearfix pt-md">
                                                                     <div class="pull-right">
                                                                         <button class="btn-raised btn-primary btn">Enviar</button>
-                                                                        <a href="/utilizadores" class="btn-default btn">Cancelar</a>
+                                                                        <a href="/" class="btn-default btn">Cancelar</a>
                                                                     </div>
                                                                 </div>
                                                             </form>

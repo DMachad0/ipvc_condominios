@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UtilizadoresController;
+use App\Http\Controllers\ApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,9 +32,8 @@ Route::get('reset-password/{token}', [AuthController::class, 'resetPw'])->name('
 Route::post('reset-password',[AuthController::class, 'confirmarResetPw'])->name('password.update');
 
 
-Route::get('utilizadores', [UtilizadoresController::class, 'adminHome'])->name('adminHome');
-Route::get('utilizadores/novo', [UtilizadoresController::class, 'adminNewUser'])->name('adminNewUser');
-Route::post('utilizadores/novo', [UtilizadoresController::class, 'confirmarNovoUtilizador'])->name('confirmarNovoUtilizador');
+Route::get('novo', [UtilizadoresController::class, 'adminNewUser'])->name('adminNewUser');
+Route::post('novo', [UtilizadoresController::class, 'confirmarNovoUtilizador'])->name('confirmarNovoUtilizador');
 
 Route::get('habitacoes', [UtilizadoresController::class, 'habitacoes'])->name('habitacoes');
 
@@ -42,3 +42,9 @@ Route::get('proprietarios', [UtilizadoresController::class, 'proprietarios'])->n
 Route::get('despesas', [UtilizadoresController::class, 'despesas'])->name('despesas');
 
 Route::get('atas', [UtilizadoresController::class, 'atas'])->name('atas');
+
+//api datatables
+Route::get('api/admins', [ApiController::class, 'admins'])->name('admins');
+Route::get('api/admins_cond', [ApiController::class, 'admins_cond'])->name('admins_cond');
+Route::get('api/props', [ApiController::class, 'props'])->name('props');
+

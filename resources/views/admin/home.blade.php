@@ -106,53 +106,155 @@
     </div>
 
     <div class="row">
-		<div class="col-md-12">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h2>Clientes</h2>
-					<div class="panel-ctrls"></div>
-				</div>
-				<div class="panel-body no-padding">
-					<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-						<thead>
-							<tr>
-								<th>Cliente</th>
-								<th>Morada</th>
-								<th>Telefone</th>
-								<th>Ações</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-                                <td>JOAO AFONSO</td>
-                                <td>Rua do Antonio</td>
-                                <td>+351 919919919</td>
-                                <td ><div class="btn-group dropdown">
-                                        <button class="btn btn-xs btn-success btn-raised">Detalhes</button>
-                                        <button class="btn btn-xs btn-success btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a href="">Editar</a></li>
-                                        </ul>
-                                    </div></td>
-                            </tr>
-
-                            <tr>
-                                <td>MARIA AFONSO</td>
-                                <td>Rua do Joao</td>
-                                <td>+351 929929929</td>
-                                <td><div class="btn-group dropdown">
-                                        <button class="btn btn-xs btn-success btn-raised">Detalhes</button>
-                                        <button class="btn btn-xs btn-success btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a href="">Editar</a></li>
-                                        </ul>
-                                    </div></td>
-                            </tr>
-						</tbody>
-					</table>
-				</div>
-				<div class="panel-footer"></div>
-			</div>
+    <div class="col-md-12">
+        <a href="/novo" class="btn btn-primary btn-raised pull-right">+ NOVO UTILIZADOR</a>
+    </div>
+        <div class="col-md-12">
+        <div class="panel panel-primary" data-widget='{"draggable": "false"}'>
+                <div class="panel-heading">
+                    <h2>Utilizadores</h2>
+                    <!-- <div class="panel-ctrls" data-actions-container="" data-action-collapse='{"target": ".panel-body, .panel-footer"}'></div> -->
+                    <div class="options">
+                        <ul class="nav nav-tabs">
+                        <li><a class="atualizarTabela" data-toggle="tab">Proprietários</a></li>
+                        <li><a class="atualizarTabela" data-toggle="tab">Administradores de Condomínios</a></li>
+                        <li class="active"><a href="#administradores_plataforma" class="atualizarTabela" data-toggle="tab">Administradores da Plataforma</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <!--<div class="tab-pane" id="administradores_condominios">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h2>Administradores de Condomínios</h2>
+                                            <div class="panel-ctrls"></div>
+                                        </div>
+                                        <div class="panel-body no-padding">
+                                            <table class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nome</th>
+                                                        <th>E-Mail</th>
+                                                        <th>Telefone</th>
+                                                        <th>Ações</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($users as $user)
+                                                        @if ($user->tipo == "adm_cond")
+                                                        <tr>
+                                                            <td>{{ $user->nome }}</td>
+                                                            <td>{{ $user->email }}</td>
+                                                            <td>{{ $user->telefone }}</td>
+                                                            <td ><div class="btn-group dropdown">
+                                                                    <button class="btn btn-xs btn-success btn-raised">Detalhes</button>
+                                                                    <button class="btn btn-xs btn-success btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                                                                    <ul class="dropdown-menu" role="menu">
+                                                                        <li><a href="">Editar</a></li>
+                                                                    </ul>
+                                                                </div></td>
+                                                        </tr>
+                                                        @endif
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="panel-footer"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
+                        <div class="tab-pane active" id="administradores_plataforma">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h2>Administradores da Plataforma</h2>
+                                            <div class="panel-ctrls"></div>
+                                        </div>
+                                        <div class="panel-body no-padding">
+                                            <table class="table table-striped table-bordered" id="tableHome" cellspacing="0" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nome</th>
+                                                        <th>E-Mail</th>
+                                                        <th>Telefone</th>
+                                                        <th>Ações</th>
+                                                    </tr>
+                                                </thead>
+                                                <!--<tbody>
+                                                    @foreach ($users as $user)
+                                                        @if ($user->tipo == "adm")
+                                                        <tr>
+                                                            <td>{{ $user->nome }}</td>
+                                                            <td>{{ $user->email }}</td>
+                                                            <td>{{ $user->telefone }}</td>
+                                                            <td ><div class="btn-group dropdown">
+                                                                    <button class="btn btn-xs btn-success btn-raised">Detalhes</button>
+                                                                    <button class="btn btn-xs btn-success btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                                                                    <ul class="dropdown-menu" role="menu">
+                                                                        <li><a href="">Editar</a></li>
+                                                                    </ul>
+                                                                </div></td>
+                                                        </tr>
+                                                        @endif
+                                                    @endforeach
+                                                </tbody>-->
+                                            </table>
+                                        </div>
+                                        <div class="panel-footer"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <!--<div class="tab-pane" id="proprietarios">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h2>Proprietários</h2>
+                                        <div class="panel-ctrls"></div>
+                                    </div>
+                                    <div class="panel-body no-padding">
+                                        <table class="table table-striped table-bordered" id="tableHome" cellspacing="0" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nome</th>
+                                                    <th>E-Mail</th>
+                                                    <th>Telefone</th>
+                                                    <th>Ações</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach ($users as $user)
+                                                    @if ($user->tipo == "prop")
+                                                    <tr>
+                                                        <td>{{ $user->nome }}</td>
+                                                        <td>{{ $user->email }}</td>
+                                                        <td>{{ $user->telefone }}</td>
+                                                        <td ><div class="btn-group dropdown">
+                                                                <button class="btn btn-xs btn-success btn-raised">Detalhes</button>
+                                                                <button class="btn btn-xs btn-success btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                                                                <ul class="dropdown-menu" role="menu">
+                                                                    <li><a href="">Editar</a></li>
+                                                                </ul>
+                                                            </div></td>
+                                                    </tr>
+                                                    @endif
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="panel-footer"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
 		</div>
 	</div>
 
@@ -404,7 +506,7 @@
 
     <script src="assets/plugins/datatables/jquery.dataTables.js"></script>
     <script src="assets/plugins/datatables/dataTables.bootstrap.js"></script>
-    <script src="assets/demo/demo-datatables.js"></script>
+    <script src="assets/js/js.js"></script>
 
     </body>
 </html>
