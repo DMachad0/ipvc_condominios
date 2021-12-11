@@ -51,7 +51,7 @@ class UtilizadoresController extends Controller
                 $data = $request->all();
                 $check = $this->create($data);
                  
-                return redirect("/utilizadores")->withSuccess('Conta criada com sucesso.');
+                return redirect("/")->withSuccess('Conta criada com sucesso.');
             } else {
                 return redirect("/");
             }
@@ -68,6 +68,20 @@ class UtilizadoresController extends Controller
             . $characters[rand(0, strlen($characters) - 1)];
 
         $password_generate = str_shuffle($pin);
+       
+        /*\Mail::raw('Os dados da sua nova conta são:\nEmail: ' . $data['email'] . '\nPassword: ' . $password_generate, function ($message) use($data, $password_generate) {
+            $message->from('diogo.machado@quintadamatabrava.pt', 'Diogo Machado');
+            $message->to('diogothbs@gmail.com');
+            $message->subject('Criação de Nova Conta');
+        });*/
+
+        $details = [
+            'nome' => $data['nome'],
+            'email' => $data['email'],
+            'password' => $password_generate
+        ];
+
+        \Mail::to('diogothbs@gmail.com')->send(new \App\Mail\NovaConta($details));
 
         return User::create([
             'nome' => $data['nome'],

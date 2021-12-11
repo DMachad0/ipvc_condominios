@@ -19,7 +19,7 @@ class ResetPassword extends Notification
         return ['mail'];
     }
 
-    public function toMail($notifiable)
+    public function build()
     {
         return (new MailMessage)
             ->subject('Your Reset Password Subject Here')

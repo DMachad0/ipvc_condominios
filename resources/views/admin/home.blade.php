@@ -116,9 +116,9 @@
                     <!-- <div class="panel-ctrls" data-actions-container="" data-action-collapse='{"target": ".panel-body, .panel-footer"}'></div> -->
                     <div class="options">
                         <ul class="nav nav-tabs">
-                        <li><a class="atualizarTabela" data-toggle="tab">Proprietários</a></li>
-                        <li><a class="atualizarTabela" data-toggle="tab">Administradores de Condomínios</a></li>
-                        <li class="active"><a href="#administradores_plataforma" class="atualizarTabela" data-toggle="tab">Administradores da Plataforma</a></li>
+                        <li><a class="atualizarTabela" data-id="props" data-toggle="tab">Proprietários</a></li>
+                        <li><a class="atualizarTabela" data-id="admins_cond" data-toggle="tab">Administradores de Condomínios</a></li>
+                        <li class="active"><a href="#administradores_plataforma" class="atualizarTabela" data-id="admins" data-toggle="tab">Administradores da Plataforma</a></li>
                         </ul>
                     </div>
                 </div>

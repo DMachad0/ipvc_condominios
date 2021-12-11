@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var dataTable = $('#tableHome').dataTable({
+    var datatable = $('#tableHome').dataTable({
     	"language": {
     		"lengthMenu": "_MENU_"
     	},
@@ -36,9 +36,10 @@ $(document).ready(function() {
 	$('.panel-footer').append($(".dataTable+.row"));
 	$('.dataTables_paginate>ul.pagination').addClass("pull-right m-n");
 
-
 	$(".atualizarTabela").click(function(){ 
-		dataTable = $('#tableHome').dataTable({
+		datatable.api().ajax.url('/api/' + $(this).data("id")).load();
+		/*$('#tableHome').dataTable({
+			destroy: true,
 			"language": {
 				"lengthMenu": "_MENU_"
 			},
@@ -62,7 +63,6 @@ $(document).ready(function() {
 					} 
 				}
 			]
-		});
-        dataTable.fnReloadAjax();
+		});*/
     });
 });
