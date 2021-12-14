@@ -35,6 +35,9 @@ Route::post('reset-password',[AuthController::class, 'confirmarResetPw'])->name(
 Route::get('novo', [UtilizadoresController::class, 'adminNewUser'])->name('adminNewUser');
 Route::post('novo', [UtilizadoresController::class, 'confirmarNovoUtilizador'])->name('confirmarNovoUtilizador');
 
+Route::get('editar/{id}', [UtilizadoresController::class, 'adminEditarUser'])->name('adminEditarUser');
+Route::post('editar/{id}', [UtilizadoresController::class, 'confirmarEditarUser'])->name('confirmarEditarUser');
+
 Route::get('habitacoes', [UtilizadoresController::class, 'habitacoes'])->name('habitacoes');
 
 Route::get('proprietarios', [UtilizadoresController::class, 'proprietarios'])->name('proprietarios');

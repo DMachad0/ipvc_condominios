@@ -38,31 +38,5 @@ $(document).ready(function() {
 
 	$(".atualizarTabela").click(function(){ 
 		datatable.api().ajax.url('/api/' + $(this).data("id")).load();
-		/*$('#tableHome').dataTable({
-			destroy: true,
-			"language": {
-				"lengthMenu": "_MENU_"
-			},
-			"ajax": {
-				"url": "/api/props",
-				"dataSrc": ""
-			},
-			columns: [
-				{ data: 'nome' },
-				{ data: 'email' },
-				{ data: 'telefone' },
-				{ data: null,
-						render: function (data, type, row) {
-							return '<div class="btn-group dropdown">' +
-							'<a class="btn btn-xs btn-success btn-raised" href="detalhes/' + data.id +'">Detalhes</a>' +
-							'<button class="btn btn-xs btn-success btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>' +
-							'<ul class="dropdown-menu" role="menu">' +
-								'<li><a href="editar/' + data.id +'">Editar</a></li>' +
-							'</ul>' +
-						'</div>';
-					} 
-				}
-			]
-		});*/
     });
 });

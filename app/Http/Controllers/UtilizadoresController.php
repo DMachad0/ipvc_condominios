@@ -21,6 +21,21 @@ class UtilizadoresController extends Controller
         return redirect("login");  
     }   
 
+    public function adminEditarUser($id)
+    {
+        if(Auth::check()){
+            $user = Auth::user();
+            if ($user->tipo == "adm") {
+                $userById = DB::select('select * from users where id = :id', ['id' => $id])[0];
+                return view('admin.editar_utilizador', ['user' => $userById]);
+            } else {
+                return redirect("/");
+            }
+        }
+  
+        return redirect("login");  
+    }   
+
     public function adminNewUser()
     {
         if(Auth::check()){
