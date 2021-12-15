@@ -6,20 +6,22 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class NovaConta extends Mailable
+class EditarConta extends Mailable
 {
     use Queueable, SerializesModels;
 
     public $details;
+    public $new_password;
 
-    public function __construct($details)
+    public function __construct($details, $new_password)
     {
         $this->details = $details;
+        $this->new_password = $new_password;
     }
 
 
     public function build()
     {
-        return $this->view('emails.nova_conta');
+        return $this->view('emails.editar_conta');
     }
 }

@@ -63,13 +63,14 @@
                                                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                                                             </div>
                                                         @endif
-                                                        <form method="POST" class="grid-form" action="{{ route('confirmarNovoUtilizador') }}">    
+                                                        <form method="POST" class="grid-form" action="{{ route('confirmarEditarUser') }}">    
                                                                 @csrf	
                                                                 <fieldset>
                                                                     <legend>Dados Pessoais</legend>
                                                                     <div data-row-span="1">
                                                                         <div data-field-span="1">
                                                                             <label>Nome</label>
+                                                                            <input type="hidden" name="id" value="{{ $user->id }}">
                                                                             <input type="text" name="nome" value="{{ $user->nome }}">
                                                                         </div>
                                                                         

@@ -36,7 +36,7 @@ Route::get('novo', [UtilizadoresController::class, 'adminNewUser'])->name('admin
 Route::post('novo', [UtilizadoresController::class, 'confirmarNovoUtilizador'])->name('confirmarNovoUtilizador');
 
 Route::get('editar/{id}', [UtilizadoresController::class, 'adminEditarUser'])->name('adminEditarUser');
-Route::post('editar/{id}', [UtilizadoresController::class, 'confirmarEditarUser'])->name('confirmarEditarUser');
+Route::post('editar', [UtilizadoresController::class, 'confirmarEditarUser'])->name('confirmarEditarUser');
 
 Route::get('habitacoes', [UtilizadoresController::class, 'habitacoes'])->name('habitacoes');
 
