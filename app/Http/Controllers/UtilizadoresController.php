@@ -10,6 +10,12 @@ use App\Models\User;
 
 class UtilizadoresController extends Controller
 {
+    private function gerarPw() {
+        $data = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $randompass = substr(str_shuffle($data), 0, 8);
+        return $randompass;
+    }
+
     public function adminHome()
     {
         if(Auth::check()){
@@ -39,18 +45,13 @@ class UtilizadoresController extends Controller
     public function edit(array $data)
     {
         if (isset($data['password'])) {
-            $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            $pin = mt_rand(1000000, 9999999)
-                . mt_rand(1000000, 9999999)
-                . $characters[rand(0, strlen($characters) - 1)];
+            $newPw = $this->gerarPw();
 
-            $password_generate = str_shuffle($pin);
-
-            \Mail::to('diogothbs@gmail.com')->send(new \App\Mail\EditarConta($data, $password_generate));
+            \Mail::to('diogothbs@gmail.com')->send(new \App\Mail\EditarConta($data, $newPw));
 
             return DB::table('users')
             ->where('id', $data['id'])
-            ->update(['nome' => $data['nome'], 'email' => $data['email'], 'telefone' => $data['telefone'], 'cc' => $data['cc'], 'tipo' => $data['tipo'], 'password' => Hash::make($password_generate)]);
+            ->update(['nome' => $data['nome'], 'email' => $data['email'], 'telefone' => $data['telefone'], 'cc' => $data['cc'], 'tipo' => $data['tipo'], 'password' => Hash::make($newPw)]);
         } else {
             \Mail::to('diogothbs@gmail.com')->send(new \App\Mail\EditarConta($data, null));
             
@@ -127,17 +128,11 @@ class UtilizadoresController extends Controller
 
     public function create(array $data)
     {
-        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $pin = mt_rand(1000000, 9999999)
-            . mt_rand(1000000, 9999999)
-            . $characters[rand(0, strlen($characters) - 1)];
-
-        $password_generate = str_shuffle($pin);
-
+        $newPw = $this->gerarPw();
         $details = [
             'nome' => $data['nome'],
             'email' => $data['email'],
-            'password' => $password_generate
+            'password' => $newPw
         ];
 
         \Mail::to('diogothbs@gmail.com')->send(new \App\Mail\NovaConta($details));
@@ -145,7 +140,7 @@ class UtilizadoresController extends Controller
         return User::create([
             'nome' => $data['nome'],
             'email' => $data['email'],
-            'password' => Hash::make($password_generate),
+            'password' => Hash::make($newPw),
             'telefone' => $data['telefone'],
             'cc' => $data['cc'],
             'tipo' => $data['tipo'],
@@ -170,5 +165,5 @@ class UtilizadoresController extends Controller
     public function atas()
     {  
         return view("admin_cond.atas");  
-    }   
+    }
 }

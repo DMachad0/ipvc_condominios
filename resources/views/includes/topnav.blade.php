@@ -5,8 +5,8 @@
 		<a class="navbar-brand navbar-brand-primary" href="#">
 			<img class="show-on-collapse img-logo-white" alt="Paper" src="favicon.png">
 			<img class="show-on-collapse img-logo-dark" alt="Paper" src="favicon.png">
-			<img class="img-white" alt="Paper" src="favicon.png">
-			<img class="img-dark" alt="Paper" src="favicon.png">
+			<img class="img-white" alt="Paper" src="{{ url('favicon.png') }}">
+			<img class="img-dark" alt="Paper" src="{{ url('favicon.png') }}">
 		</a>
 
 		<span id="trigger-sidebar" class="toolbar-trigger toolbar-icon-bg stay-on-search">

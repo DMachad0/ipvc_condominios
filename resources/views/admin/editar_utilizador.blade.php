@@ -36,7 +36,7 @@
                     <div class="static-content">
                         <div class="page-content">
                             <ol class="breadcrumb">                                
-                                <li><a href="/utilizadores">Utilizadores</a></li>
+                                <li><a href="/">Utilizadores</a></li>
                                 <li class="active"><a href="#">Novo Utilizador</a></li>
                             </ol>
                             <div class="page-heading">
