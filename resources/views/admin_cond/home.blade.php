@@ -105,50 +105,22 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="panel panel-default">
-                                                    <div class="panel-heading">
-                                                        <h2>Clientes</h2>
-                                                        <div class="panel-ctrls"></div>
-                                                    </div>
-                                                    <div class="panel-body no-padding">
-                                                        <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>Cliente</th>
-                                                                    <th>Morada</th>
-                                                                    <th>Telefone</th>
-                                                                    <th>Ações</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td>JOAO AFONSO</td>
-                                                                    <td>Rua do Antonio</td>
-                                                                    <td>+351 919919919</td>
-                                                                    <td ><div class="btn-group dropdown">
-                                                                            <button class="btn btn-xs btn-success btn-raised">Detalhes</button>
-                                                                            <button class="btn btn-xs btn-success btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-                                                                            <ul class="dropdown-menu" role="menu">
-                                                                                <li><a href="">Editar</a></li>
-                                                                            </ul>
-                                                                        </div></td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>MARIA AFONSO</td>
-                                                                    <td>Rua do Joao</td>
-                                                                    <td>+351 929929929</td>
-                                                                    <td><div class="btn-group dropdown">
-                                                                            <button class="btn btn-xs btn-success btn-raised">Detalhes</button>
-                                                                            <button class="btn btn-xs btn-success btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-                                                                            <ul class="dropdown-menu" role="menu">
-                                                                                <li><a href="">Editar</a></li>
-                                                                            </ul>
-                                                                        </div></td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                    <div class="panel-footer"></div>
+                                                <div class="panel-heading">
+                                                    <div class="panel-ctrls"></div>
+                                                </div>
+                                                <div class="panel-body no-padding">
+                                                    <table class="table table-striped table-bordered" id="tableHome" cellspacing="0" width="100%">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Nome</th>
+                                                                <th>Telefone</th>
+                                                                <th>Código Postal</th>
+                                                                <th>Ações</th>
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+                                                </div>
+                                                <div class="panel-footer"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -222,7 +194,7 @@
 
     <script src="assets/plugins/datatables/jquery.dataTables.js"></script>
     <script src="assets/plugins/datatables/dataTables.bootstrap.js"></script>
-    <script src="assets/demo/demo-datatables.js"></script>
+    <script src="assets/js/main/adm_cond.js"></script>
 
     </body>
 </html>

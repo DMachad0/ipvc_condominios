@@ -51,3 +51,4 @@ Route::get('api/admins', [ApiController::class, 'admins'])->name('admins');
 Route::get('api/admins_cond', [ApiController::class, 'admins_cond'])->name('admins_cond');
 Route::get('api/props', [ApiController::class, 'props'])->name('props');
 
+Route::get('api/meus_condominios', [ApiController::class, 'meus_condominios'])->name('meus_condominios');

@@ -14,10 +14,12 @@ class CreateCondominios extends Migration
     public function up()
     {
         Schema::create('condominios', function (Blueprint $table) {
+            $table->unsignedBigInteger('id_user');
             $table->id();
             $table->string('nome');
             $table->string('telefone');
             $table->string('cp');
+            $table->foreign('id_user')->references('id')->on('users');
             $table->timestamps();
         });
     }

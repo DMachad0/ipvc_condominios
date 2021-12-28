@@ -401,7 +401,7 @@
 
     <script src="assets/plugins/datatables/jquery.dataTables.js"></script>
     <script src="assets/plugins/datatables/dataTables.bootstrap.js"></script>
-    <script src="assets/js/js.js"></script>
+    <script src="assets/js/main/adm.js"></script>
 
     </body>
 </html>
