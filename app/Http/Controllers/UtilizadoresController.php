@@ -170,9 +170,81 @@ class UtilizadoresController extends Controller
 
     public function habitacoes()
     {  
-        $condominioAtual = Session::get('condominio');
-        return view("admin_cond.habitacoes", ["condominioAtual" => $condominioAtual]);  
+        $idCondominio = Session::get('condominio');
+        if ($idCondominio) {
+            $condominioAtual = DB::table('condominios')
+            ->where('id', $idCondominio)
+            ->get()[0];
+            return view("admin_cond.habitacoes", ["condominioAtual" => $condominioAtual]);
+        } else {
+            return redirect("/");
+        }
     }
+
+    public function novaHabitacao()
+    {
+        if(Auth::check()){
+            $user = Auth::user();
+            if ($user->tipo == "adm_cond") {
+                $condominios = DB::table('condominios')
+                ->where('id_user', '=', $user->id)
+                ->get();
+                $tipoHabitacoes = DB::table('tipo_habitacao')
+                ->get();
+                return view('admin_cond.nova_habitacao', ["condominios" => $condominios, "tipoHabitacoes" => $tipoHabitacoes]);
+            } else {
+                return redirect("/");
+            }
+        }
+  
+        return redirect("login");  
+    }
+
+    public function confirmarNovaHabitacao(Request $request)
+    {
+        if(Auth::check()){
+            $user = Auth::user();
+            if ($user->tipo == "adm_cond") {
+                $request->validate([
+                    'condominio' => 'required',
+                    'portaria' => 'required',
+                    'tipoHabitacao' => 'required',
+                    'email' => 'required|email',
+                    'cc' => 'required|min:8|max:8',
+                    'nome' => 'required',
+                    'telefone' => 'required',          
+                ]); 
+                $data = $request->all();
+                
+                $novoProprietario = DB::table('users')->where('cc', $data["cc"])->get();
+                if ($novoProprietario->count() == 1) {
+                    DB::table('habitacoes')->insert([
+                        'id_user' => $novoProprietario[0]->id,
+                        'id_condominio' => $data["condominio"],
+                        'id_tipo' => $data["tipoHabitacao"],
+                        'morada' => "aaa",
+                        'portaria' => $data["portaria"]
+                    ]);
+                    return redirect("/habitacoes");
+                } else {
+                    $data["tipo"] = "prop";
+                    $novoProprietario = $this->create($data);
+                    DB::table('habitacoes')->insert([
+                        'id_user' => $novoProprietario->id,
+                        'id_condominio' => $data["condominio"],
+                        'id_tipo' => $data["tipoHabitacao"],
+                        'morada' => "aaa",
+                        'portaria' => $data["portaria"]
+                    ]);
+                    return redirect("/habitacoes");
+                }    
+            } else {
+                return redirect("/habitacoes");
+            }
+        }
+  
+        return redirect("/utilizadores");  
+    }  
 
     public function proprietarios()
     {  

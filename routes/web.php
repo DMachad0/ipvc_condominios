@@ -39,6 +39,8 @@ Route::get('editar/{id}', [UtilizadoresController::class, 'adminEditarUser'])->n
 Route::post('editar', [UtilizadoresController::class, 'confirmarEditarUser'])->name('confirmarEditarUser');
 
 Route::get('habitacoes', [UtilizadoresController::class, 'habitacoes'])->name('habitacoes');
+Route::get('novaHabitacao', [UtilizadoresController::class, 'novaHabitacao'])->name('novaHabitacao');
+Route::post('novaHabitacao', [UtilizadoresController::class, 'confirmarNovaHabitacao'])->name('confirmarNovaHabitacao');
 
 Route::get('proprietarios', [UtilizadoresController::class, 'proprietarios'])->name('proprietarios');
 
@@ -53,4 +55,8 @@ Route::get('api/admins', [ApiController::class, 'admins'])->name('admins');
 Route::get('api/admins_cond', [ApiController::class, 'admins_cond'])->name('admins_cond');
 Route::get('api/props', [ApiController::class, 'props'])->name('props');
 
-Route::get('api/meus_condominios', [ApiController::class, 'meus_condominios'])->name('meus_condominios');
+Route::get('api/minhas_habitacoes', [ApiController::class, 'minhas_habitacoes'])->name('minhas_habitacoes');
+
+Route::get('api/proprietario/{cc}', [ApiController::class, 'proprietario']);
+
+Route::post('api/novaHabitacao', [ApiController::class, 'novaHabitacao'])->name('novaHabitacao');

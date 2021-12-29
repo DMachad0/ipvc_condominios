@@ -79,10 +79,13 @@
                                                         </div>
                                                         <div class="panel-footer">
                                                             <div class="clearfix">
-                                                                <button class="btn btn-primary btn-raised pull-right">Continuar</button>
+                                                                <center><button class="btn btn-primary btn-raised">Continuar</button></center>
                                                             </div>
                                                         </div>
+                                                        
                                                     </form>
+                                                    <hr>
+                                                        <center><a href="/novoCondominio" class="btn btn-primary btn-raised">+ Novo Condominio</a></center>
                                                 </div>	
                                             </div>
                                         </div>
