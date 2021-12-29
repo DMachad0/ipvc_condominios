@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -126,6 +127,26 @@ class UtilizadoresController extends Controller
         return redirect("/utilizadores");  
     }   
 
+    public function confirmarSelecionarCondominio(Request $request)
+    {
+        if(Auth::check()){
+            $user = Auth::user();
+            if ($user->tipo == "adm_cond") {
+                $request->validate([
+                    'condominio' => 'required'
+                ]);
+                $data = $request->all();
+
+                Session::put('condominio', $data['condominio']);
+                return redirect("/habitacoes");
+            } else {
+                return redirect("/login");
+            }
+        }
+  
+        return redirect("/login");  
+    }   
+
     public function create(array $data)
     {
         $newPw = $this->gerarPw();
@@ -149,7 +170,8 @@ class UtilizadoresController extends Controller
 
     public function habitacoes()
     {  
-        return view("admin_cond.habitacoes");  
+        $condominioAtual = Session::get('condominio');
+        return view("admin_cond.habitacoes", ["condominioAtual" => $condominioAtual]);  
     }
 
     public function proprietarios()

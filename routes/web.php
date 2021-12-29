@@ -46,6 +46,8 @@ Route::get('despesas', [UtilizadoresController::class, 'despesas'])->name('despe
 
 Route::get('atas', [UtilizadoresController::class, 'atas'])->name('atas');
 
+Route::post('confirmarSelecionarCondominio', [UtilizadoresController::class, 'confirmarSelecionarCondominio'])->name('confirmarSelecionarCondominio'); 
+
 //api datatables
 Route::get('api/admins', [ApiController::class, 'admins'])->name('admins');
 Route::get('api/admins_cond', [ApiController::class, 'admins_cond'])->name('admins_cond');

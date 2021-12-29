@@ -81,7 +81,12 @@ class AuthController extends Controller
                 $users = DB::table('users')->get();
                 return view('admin.home', ['users' => $users]);
             } elseif ($user->tipo == "adm_cond") {
-                return view('admin_cond.home');
+                $condominios = DB::table('condominios')
+                ->where('id_user', '=', $user->id)
+                ->get();
+                //Session::put('condominio', 2);
+                //print(Session::get('variableName'));
+                return view('admin_cond.selecionar', ['condominios' => $condominios]);
             } 
         }
   
