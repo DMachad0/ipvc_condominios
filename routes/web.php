@@ -42,6 +42,9 @@ Route::get('habitacoes', [UtilizadoresController::class, 'habitacoes'])->name('h
 Route::get('novaHabitacao', [UtilizadoresController::class, 'novaHabitacao'])->name('novaHabitacao');
 Route::post('novaHabitacao', [UtilizadoresController::class, 'confirmarNovaHabitacao'])->name('confirmarNovaHabitacao');
 
+Route::get('novoCondominio', [UtilizadoresController::class, 'novoCondominio'])->name('novaHabitacao');
+Route::post('novoCondominio', [UtilizadoresController::class, 'confirmarNovoCondominio'])->name('confirmarNovoCondominio');
+
 Route::get('proprietarios', [UtilizadoresController::class, 'proprietarios'])->name('proprietarios');
 
 Route::get('despesas', [UtilizadoresController::class, 'despesas'])->name('despesas');
@@ -60,3 +63,5 @@ Route::get('api/minhas_habitacoes', [ApiController::class, 'minhas_habitacoes'])
 Route::get('api/proprietario/{cc}', [ApiController::class, 'proprietario']);
 
 Route::post('api/novaHabitacao', [ApiController::class, 'novaHabitacao'])->name('novaHabitacao');
+
+Route::get('api/meus_proprietarios', [ApiController::class, 'meus_proprietarios'])->name('meus_proprietarios');

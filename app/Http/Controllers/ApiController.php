@@ -41,6 +41,16 @@ class ApiController extends Controller
             ->get();
     }
 
+    public function meus_proprietarios()
+    {
+     return DB::table('habitacoes')
+            ->join('users', 'users.id', '=', 'habitacoes.id_user')
+            ->where('habitacoes.id_condominio', Session::get('condominio'))
+            ->groupByRaw('habitacoes.id_user')
+            ->selectRaw('users.id, users.nome, COUNT(*) AS habitacoes')
+            ->get();
+    }
+
     public function novaHabitacao(Request $request)
     {
       return DB::table('tipo_habitacao')->insertGetId([

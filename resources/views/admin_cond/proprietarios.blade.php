@@ -50,48 +50,32 @@
                                     <li class=""><a href="#">Proprietários</a></li>
                                 </ol>
                                 <div class="page-heading">            
-                                <h1>Proprietários</h1>
+                                <h1>Proprietários - {{ $condominioAtual->nome }}</h1><br><br>
+                                <a href="/">Clique aqui para trocar de condominio</a>
                                 <div class="options"></div>
                             </div>
                             <div class="container-fluid">
                                     <div data-widget-group="group1">                                   
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <div class="panel panel-default">
-                                                    <div class="panel-heading">
-                                                        <h2>Clientes</h2>
+                                                
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                        <h2>Proprietários</h2>
                                                         <div class="panel-ctrls"></div>
                                                     </div>
                                                     <div class="panel-body no-padding">
-                                                        <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                                        <table class="table table-striped table-bordered" id="tabelaProprietarios" cellspacing="0" width="100%">
                                                             <thead>
                                                                 <tr>
-                                                                    <th>Proprietário</th>
-                                                                    <th>Morada</th>
-                                                                    <th>Portaria</th>
+                                                                <th>Proprietário</th>
+                                                                    <th>Nº Habitações</th>
                                                                     <th>Ações</th>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody>
-                                                            @foreach ($users as $user)
-																@if ($user->tipo == "prop")
-                                                                    <tr>
-                                                                        <td>{{ $user->nome }}</td>
-                                                                        <td>{{ $habitacoes->morada }}</td>
-                                                                        <td>{{ $habitacoes->portaria }}</td>
-                                                                        <td ><div class="btn-group dropdown">
-                                                                                <button class="btn btn-xs btn-success btn-raised">Detalhes</button>
-                                                                                <button class="btn btn-xs btn-success btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-                                                                                <ul class="dropdown-menu" role="menu">
-                                                                                    <li><a href="">Editar</a></li>
-                                                                                </ul>
-                                                                            </div></td>
-                                                                    </tr>
-                                                                @endif
-															@endforeach    
-                                                            </tbody>
                                                         </table>
                                                     </div>
+                                                    <div class="panel-footer"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -161,7 +145,6 @@
 
         <script src="assets/plugins/datatables/jquery.dataTables.js"></script>
         <script src="assets/plugins/datatables/dataTables.bootstrap.js"></script>
-        <script src="assets/demo/demo-datatables.js"></script>
-
+        <script src="assets/js/main/adm_cond.js"></script>
     </body>
 </html>

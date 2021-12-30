@@ -244,11 +244,64 @@ class UtilizadoresController extends Controller
         }
   
         return redirect("/utilizadores");  
-    }  
+    } 
+    
+    public function novoCondominio()
+    {
+        if(Auth::check()){
+            $user = Auth::user();
+            if ($user->tipo == "adm_cond") {
+                return view('admin_cond.novo_condominio');
+            } else {
+                return redirect("/");
+            }
+        }
+  
+        return redirect("login");  
+    }
+
+    public function confirmarNovoCondominio(Request $request)
+    {
+        if(Auth::check()){
+            $user = Auth::user();
+            if ($user->tipo == "adm_cond") {
+                $request->validate([
+                    'nome' => 'required',
+                    'telefone' => 'required',
+                    'cp' => 'required',
+                    'morada' => 'required'
+                ]); 
+                $data = $request->all();
+                
+                $idCondominio = DB::table('condominios')->insertGetId([
+                    'nome' => $data["nome"],
+                    'telefone' => $data["telefone"],
+                    'cp' => $data["cp"],
+                    'id_user' => $user->id
+                ]);
+
+                Session::put('condominio', $idCondominio);
+                return redirect("/");
+
+            } else {
+                return redirect("/");
+            }
+        }
+  
+        return redirect("/");  
+    } 
 
     public function proprietarios()
     {  
-        return view("admin_cond.proprietarios");  
+        $idCondominio = Session::get('condominio');
+        if ($idCondominio) {
+            $condominioAtual = DB::table('condominios')
+            ->where('id', $idCondominio)
+            ->get()[0];
+            return view("admin_cond.proprietarios", ["condominioAtual" => $condominioAtual]);
+        } else {
+            return redirect("/");
+        }
     }
     
     public function despesas()
