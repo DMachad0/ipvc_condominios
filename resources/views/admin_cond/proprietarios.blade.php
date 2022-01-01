@@ -68,7 +68,7 @@
                                                         <table class="table table-striped table-bordered" id="tabelaProprietarios" cellspacing="0" width="100%">
                                                             <thead>
                                                                 <tr>
-                                                                <th>Proprietário</th>
+                                                                    <th>Proprietário</th>
                                                                     <th>Nº Habitações</th>
                                                                     <th>Ações</th>
                                                                 </tr>

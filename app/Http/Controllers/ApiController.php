@@ -57,4 +57,39 @@ class ApiController extends Controller
           'tipo' => $request["novaHabitacao"]
       ]);
     }  
+
+    public function minhas_despesas($estado)
+    {
+      if ($estado == "pago") {
+        return DB::table('despesas')
+            ->where('id_condominio', Session::get('condominio'))
+            ->where('pago', 1)
+            ->get();
+      } else if ($estado == "por_pagar") {
+        return DB::table('despesas')
+            ->where('id_condominio', Session::get('condominio'))
+            ->where('pago', 0)
+            ->get();
+      } else if ($estado == "todos") {
+        return DB::table('despesas')
+            ->where('id_condominio', Session::get('condominio'))
+            ->get();
+      }
+
+      return false;
+    }
+
+    public function atualizarEstado(Request $request)
+    {
+      return DB::table('despesas')
+                ->where('id', $request["id"])
+                ->update(['pago' => $request["pago"]]);
+    }  
+
+    public function minhas_atas()
+    {
+     return DB::table('atas_reunioes')
+            ->where('id_condominio', Session::get('condominio'))
+            ->get();
+    }
 }

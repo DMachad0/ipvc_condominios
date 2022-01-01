@@ -50,6 +50,8 @@ Route::get('proprietarios', [UtilizadoresController::class, 'proprietarios'])->n
 Route::get('despesas', [UtilizadoresController::class, 'despesas'])->name('despesas');
 
 Route::get('atas', [UtilizadoresController::class, 'atas'])->name('atas');
+Route::get('novaAta', [UtilizadoresController::class, 'novaAta'])->name('novaAta');
+Route::post('novaAta', [UtilizadoresController::class, 'confirmarNovaAta'])->name('confirmarNovaAta');
 
 Route::post('confirmarSelecionarCondominio', [UtilizadoresController::class, 'confirmarSelecionarCondominio'])->name('confirmarSelecionarCondominio'); 
 
@@ -65,3 +67,8 @@ Route::get('api/proprietario/{cc}', [ApiController::class, 'proprietario']);
 Route::post('api/novaHabitacao', [ApiController::class, 'novaHabitacao'])->name('novaHabitacao');
 
 Route::get('api/meus_proprietarios', [ApiController::class, 'meus_proprietarios'])->name('meus_proprietarios');
+
+Route::get('api/minhas_despesas/{estado}', [ApiController::class, 'minhas_despesas'])->name('minhas_despesas');
+Route::post('api/atualizarEstado', [ApiController::class, 'atualizarEstado'])->name('atualizarEstado');
+
+Route::get('api/minhas_atas', [ApiController::class, 'minhas_atas'])->name('minhas_atas');

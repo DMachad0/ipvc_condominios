@@ -9,6 +9,7 @@
     <meta name="apple-touch-fullscreen" content="yes">
     <meta name="description" content="Gestão de Condominios">
     <meta name="author" content="Diogo Machado e Rui Alves">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="shortcut icon" href="{{ url('favicon.png') }}">
 
@@ -50,48 +51,61 @@
                                     <li class=""><a href="#">Despesas</a></li>
                                 </ol>
                                 <div class="page-heading">            
-                                <h1>Despesas</h1>
+                                <h1>Despesas - {{ $condominioAtual->nome }}</h1><br><br>
+                                <a href="/">Clique aqui para trocar de condominio</a>
                                 <div class="options"></div>
                             </div>
                             <div class="container-fluid">
                                     <div data-widget-group="group1">                                   
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <div class="panel panel-default">
-                                                    <div class="panel-heading">
-                                                        <h2>Despesas</h2>
-                                                        <div class="panel-ctrls"></div>
-                                                    </div>
-                                                    <div class="panel-body no-padding">
-                                                        <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>Descrição</th>
-                                                                    <th>Valor</th>
-                                                                    <th>Pago</th>
-                                                                    <th>Data</th>
-                                                                    <th>Ações</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td>Luz</td>
-                                                                    <td>30€</td>
-                                                                    <td>Por pagar</td>
-                                                                    <td>23/11/2021</td>
-                                                                    <td ><div class="btn-group dropdown">
-                                                                            <button class="btn btn-xs btn-success btn-raised">Detalhes</button>
-                                                                            <button class="btn btn-xs btn-success btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-                                                                            <ul class="dropdown-menu" role="menu">
-                                                                                <li><a href="">Editar</a></li>
-                                                                            </ul>
-                                                                        </div></td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                    <div class="panel-footer"></div>
-                                                </div>
+                                            <div class="panel panel-primary" data-widget='{"draggable": "false"}'>
+                <div class="panel-heading">
+                    <h2>Despesas</h2>
+                    <!-- <div class="panel-ctrls" data-actions-container="" data-action-collapse='{"target": ".panel-body, .panel-footer"}'></div> -->
+                    <div class="options">
+                        <ul class="nav nav-tabs">
+                        <li><a class="atualizarTabela" data-id="todos" data-toggle="tab">Todos</a></li>
+                        <li><a class="atualizarTabela" data-id="pago" data-toggle="tab">Pago</a></li>
+                        <li class="active"><a class="atualizarTabela" data-id="por_pagar" data-toggle="tab">Por Pagar</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="por_pagar">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h2>Despesas</h2>
+                                            <div class="panel-ctrls"></div>
+                                            <div class="col-md-3">    
+                                                <a href="/novaDespesa" class="btn btn-xs btn-primary btn-raised">+ NOVA DESPESA</a>          
+                                            </div> 
+                                        </div>
+                                        <div class="panel-body no-padding">
+                                            <table class="table table-striped table-bordered" id="tableDespesas" cellspacing="0" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Data</th>
+                                                        <th>Descrição</th>
+                                                        <th>Valor</th>
+                                                        <th>Estado</th>
+                                                        <th>Ações</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                        <div class="panel-footer"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+		</div>
                                             </div>
                                         </div>
 
@@ -159,9 +173,11 @@
 
         <!-- End loading page level scripts-->
 
+        <script src="assets/plugins/bootbox/bootbox.js"></script>
         <script src="assets/plugins/datatables/jquery.dataTables.js"></script>
         <script src="assets/plugins/datatables/dataTables.bootstrap.js"></script>
-        <script src="assets/demo/demo-datatables.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="assets/js/main/adm_cond.js"></script>
 
     </body>
 </html>

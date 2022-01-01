@@ -47,58 +47,34 @@
                         <div class="static-content">
                             <div class="page-content">
                                 <ol class="breadcrumb">
-                                    <li class=""><a href="#">Habitações</a></li>
+                                    <li class=""><a href="#">Atas</a></li>
                                 </ol>
                                 <div class="page-heading">            
-                                    <h1>Habitações</h1>
-                                    <a href="/utilizadores/novo" class="btn btn-primary btn-raised pull-right">+ NOVA ATA</a>
-                                </div>
+                                <h1>Atas - {{ $condominioAtual->nome }}</h1><br><br>
+                                <a href="/">Clique aqui para trocar de condominio</a>
+                                <div class="options"></div>
+                            </div>
                             <div class="container-fluid">
                                     <div data-widget-group="group1">                                   
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="panel panel-default">
                                                     <div class="panel-heading">
-                                                        <h2>Habitações</h2>
+                                                        <h2>Atas</h2>
                                                         <div class="panel-ctrls"></div>
+                                                        <div class="col-md-3">    
+                                                            <a href="/novaAta" class="btn btn-xs btn-primary btn-raised">+ NOVA ATA</a>          
+                                                        </div> 
                                                     </div>
                                                     <div class="panel-body no-padding">
-                                                        <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                                        <table class="table table-striped table-bordered" id="tableAtas" cellspacing="0" width="100%">
                                                             <thead>
                                                                 <tr>
                                                                     <th>Data</th>
-                                                                    <th>Ata</th>
                                                                     <th>Descrição</th>
                                                                     <th>Ações</th>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td>JOAO AFONSO</td>
-                                                                    <td>Rua do Antonio</td>
-                                                                    <td>2º Direito, Bloco C</td>
-                                                                    <td ><div class="btn-group dropdown">
-                                                                            <button class="btn btn-xs btn-success btn-raised">Detalhes</button>
-                                                                            <button class="btn btn-xs btn-success btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-                                                                            <ul class="dropdown-menu" role="menu">
-                                                                                <li><a href="">Editar</a></li>
-                                                                            </ul>
-                                                                        </div></td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>MARIA AFONSO</td>
-                                                                    <td>Rua do Joao</td>
-                                                                    <td>1º Direito, Bloco C</td>
-                                                                    <td><div class="btn-group dropdown">
-                                                                            <button class="btn btn-xs btn-success btn-raised">Detalhes</button>
-                                                                            <button class="btn btn-xs btn-success btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-                                                                            <ul class="dropdown-menu" role="menu">
-                                                                                <li><a href="">Editar</a></li>
-                                                                            </ul>
-                                                                        </div></td>
-                                                                </tr>
-                                                            </tbody>
                                                         </table>
                                                     </div>
                                                     <div class="panel-footer"></div>
@@ -172,7 +148,7 @@
 
         <script src="assets/plugins/datatables/jquery.dataTables.js"></script>
         <script src="assets/plugins/datatables/dataTables.bootstrap.js"></script>
-        <script src="assets/demo/demo-datatables.js"></script>
+        <script src="assets/js/main/adm_cond.js"></script>
 
     </body>
 </html>

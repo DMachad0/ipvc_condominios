@@ -306,11 +306,69 @@ class UtilizadoresController extends Controller
     
     public function despesas()
     {  
-        return view("admin_cond.despesas");  
+        $idCondominio = Session::get('condominio');
+        if ($idCondominio) {
+            $condominioAtual = DB::table('condominios')
+            ->where('id', $idCondominio)
+            ->get()[0];
+            return view("admin_cond.despesas", ["condominioAtual" => $condominioAtual]);
+        } else {
+            return redirect("/");
+        }
     }   
 
     public function atas()
     {  
-        return view("admin_cond.atas");  
+        $idCondominio = Session::get('condominio');
+        if ($idCondominio) {
+            $condominioAtual = DB::table('condominios')
+            ->where('id', $idCondominio)
+            ->get()[0];
+            return view("admin_cond.atas", ["condominioAtual" => $condominioAtual]);
+        } else {
+            return redirect("/");
+        }
     }
+
+    public function novaAta()
+    {
+        if(Auth::check()){
+            $user = Auth::user();
+            if ($user->tipo == "adm_cond") {
+                return view('admin_cond.nova_ata');
+            } else {
+                return redirect("/");
+            }
+        }
+  
+        return redirect("/");  
+    }
+
+    public function confirmarNovaAta(Request $request)
+    {
+        if(Auth::check()){
+            $user = Auth::user();
+            if ($user->tipo == "adm_cond") {
+                $request->validate([
+                    'descricao' => 'required',
+                    'ata' => 'required',
+                    'data' => 'required'
+                ]);
+                $data = $request->all();
+
+                DB::table('atas_reunioes')->insert([
+                    'ata' => $data["ata"],
+                    'descricao' => $data["descricao"],
+                    'data' => $data["data"],
+                    'id_condominio' => Session::get('condominio')
+                ]);
+
+                return redirect("/atas");
+            } else {
+                return redirect("/login");
+            }
+        }
+  
+        return redirect("/login");  
+    } 
 }
