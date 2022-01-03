@@ -56,6 +56,8 @@ Route::post('editarDespesa/{id}', [UtilizadoresController::class, 'confirmarEdit
 Route::get('atas', [UtilizadoresController::class, 'atas'])->name('atas');
 Route::get('novaAta', [UtilizadoresController::class, 'novaAta'])->name('novaAta');
 Route::post('novaAta', [UtilizadoresController::class, 'confirmarNovaAta'])->name('confirmarNovaAta');
+Route::get('editarAta/{id}', [UtilizadoresController::class, 'editarAta'])->name('editarAta');
+Route::post('editarAta/{id}', [UtilizadoresController::class, 'confirmarEditarAta'])->name('confirmarEditarAta');
 
 Route::post('confirmarSelecionarCondominio', [UtilizadoresController::class, 'confirmarSelecionarCondominio'])->name('confirmarSelecionarCondominio'); 
 
@@ -78,3 +80,4 @@ Route::post('api/atualizarEstado', [ApiController::class, 'atualizarEstado'])->n
 Route::get('api/minhas_atas', [ApiController::class, 'minhas_atas'])->name('minhas_atas');
 
 Route::post('api/apagarDespesa', [ApiController::class, 'apagarDespesa'])->name('apagarDespesa');
+Route::get('api/ata/{id}', [ApiController::class, 'ata'])->name('ata');

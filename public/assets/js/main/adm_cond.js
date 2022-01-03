@@ -298,11 +298,38 @@ $(document).ready(function() {
 				{ data: 'descricao' },
 				{ data: null,
 						render: function (data, type, row) {
+							$(".resumo").click(function(){ 
+								var id = $(this).data("id");
+								axios.get('/api/ata/' + id)
+								.then((response) => {
+									if (response.data[0]) {
+										bootbox.hideAll();
+										bootbox.alert("<b>Data:</b> " + response.data[0].data + "<br><b>Descrição:</b> " + response.data[0].descricao + "<br><b>Resumo:</b><br>" + (response.data[0].ata).replace(/\r\n/g,"<br>"));
+									} else {
+										new PNotify({
+											title: 'Oops!',
+											text: 'Ocorreu um erro por favor tente mais tarde.',
+											type: 'error',
+											icon: 'ti ti-close',
+											styling: 'fontawesome'
+										});
+									}
+								})
+								.catch((error) => {
+									new PNotify({
+										title: 'Oops!',
+										text: 'Ocorreu um erro por favor tente mais tarde.',
+										type: 'error',
+										icon: 'ti ti-close',
+										styling: 'fontawesome'
+									});
+								});
+							});
 							return '<div class="btn-group dropdown">' +
-							'<a class="btn btn-xs btn-success btn-raised" href="detalhes/' + data.id +'">Detalhes</a>' +
+							'<a class="btn btn-xs btn-success btn-raised resumo" data-id="' + data.id +'" >Ver Resumo</a>' +
 							'<button class="btn btn-xs btn-success btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>' +
 							'<ul class="dropdown-menu" role="menu">' +
-								'<li><a href="editar/' + data.id +'">Editar</a></li>' +
+								'<li><a href="editarAta/' + data.id +'">Editar</a></li>' +
 							'</ul>' +
 						'</div>';
 					} 

@@ -473,4 +473,51 @@ class UtilizadoresController extends Controller
   
         return redirect("/login");  
     } 
+
+    public function editarAta($id)
+    {
+        if(Auth::check()){
+            $user = Auth::user();
+            if ($user->tipo == "adm_cond") {                
+                $ata = DB::table('atas_reunioes')
+                ->where('id', $id)
+                ->get();
+
+                return view('admin_cond.editar_ata', ["ata" => $ata[0]]);
+            } else {
+                return redirect("/");
+            }
+        }
+  
+        return redirect("/");  
+    }
+
+    public function confirmarEditarAta($id, Request $request)
+    {
+        if(Auth::check()){
+            $user = Auth::user();
+            if ($user->tipo == "adm_cond") {
+                $request->validate([
+                    'ata' => 'required',
+                    'data' => 'required',
+                    'descricao' => 'required'
+                ]); 
+                $data = $request->all();
+                
+                DB::table('atas_reunioes')->where('id', $id)
+                ->update([
+                    'ata' => $data["ata"],
+                    'descricao' => $data["descricao"],
+                    'data' => $data["data"]
+                ]);
+
+                return redirect("/atas")->withSuccess('Ata editada com sucesso.');;
+
+            } else {
+                return redirect("/");
+            }
+        }
+  
+        return redirect("/");  
+    } 
 }

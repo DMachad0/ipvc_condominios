@@ -99,4 +99,11 @@ class ApiController extends Controller
             ->where('id_condominio', Session::get('condominio'))
             ->get();
     }
+
+    public function ata($id)
+    {
+     return DB::table('atas_reunioes')
+            ->where('id', $id)
+            ->get();
+    }
 }

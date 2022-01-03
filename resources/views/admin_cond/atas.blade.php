@@ -36,6 +36,7 @@
     <link href="assets/less/card.less" type="text/css" rel="stylesheet"> 
 
     <link href="assets/plugins/chartist/dist/chartist.min.css" type="text/css" rel="stylesheet"> <!-- chartist -->
+    <link href="{{ url('assets/plugins/pines-notify/pnotify.css') }}" type="text/css" rel="stylesheet">									<!-- Gridforms -->
 
 </head>
     <body class="animated-content infobar-overlay">
@@ -148,6 +149,9 @@
 
         <script src="assets/plugins/datatables/jquery.dataTables.js"></script>
         <script src="assets/plugins/datatables/dataTables.bootstrap.js"></script>
+        <script src="assets/plugins/pines-notify/pnotify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="assets/plugins/bootbox/bootbox.js"></script>
         <script src="assets/js/main/adm_cond.js"></script>
 
     </body>
