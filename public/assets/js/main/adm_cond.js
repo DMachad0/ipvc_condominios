@@ -19,10 +19,10 @@ $(document).ready(function() {
 				{ data: null,
 						render: function (data, type, row) {
 							return '<div class="btn-group dropdown">' +
-							'<a class="btn btn-xs btn-success btn-raised" href="detalhes/' + data.id +'">Detalhes</a>' +
-							'<button class="btn btn-xs btn-success btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>' +
+							'<a class="btn btn-xs btn-warning btn-raised" href="editarHabitacao/' + data.id +'">Editar</a>' +
+							'<button class="btn btn-xs btn-warning btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>' +
 							'<ul class="dropdown-menu" role="menu">' +
-								'<li><a href="editar/' + data.id +'">Editar</a></li>' +
+								'<li><a href="pagamentos/' + data.id +'">Ver Pagamentos</a></li>' +
 							'</ul>' +
 						'</div>';
 					} 

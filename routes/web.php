@@ -41,6 +41,8 @@ Route::post('editar', [UtilizadoresController::class, 'confirmarEditarUser'])->n
 Route::get('habitacoes', [UtilizadoresController::class, 'habitacoes'])->name('habitacoes');
 Route::get('novaHabitacao', [UtilizadoresController::class, 'novaHabitacao'])->name('novaHabitacao');
 Route::post('novaHabitacao', [UtilizadoresController::class, 'confirmarNovaHabitacao'])->name('confirmarNovaHabitacao');
+Route::get('editarHabitacao/{id}', [UtilizadoresController::class, 'editarHabitacao'])->name('editarHabitacao');
+Route::post('editarHabitacao/{id}', [UtilizadoresController::class, 'confirmarEditarHabitacao'])->name('confirmarEditarHabitacao');
 
 Route::get('novoCondominio', [UtilizadoresController::class, 'novoCondominio'])->name('novaHabitacao');
 Route::post('novoCondominio', [UtilizadoresController::class, 'confirmarNovoCondominio'])->name('confirmarNovoCondominio');

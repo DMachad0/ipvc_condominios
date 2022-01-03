@@ -245,6 +245,78 @@ class UtilizadoresController extends Controller
   
         return redirect("/utilizadores");  
     } 
+
+    public function editarHabitacao($id)
+    {
+        if(Auth::check()){
+            $user = Auth::user();
+            if ($user->tipo == "adm_cond") {
+                $condominios = DB::table('condominios')
+                ->where('id_user', '=', $user->id)
+                ->get();
+                $tipoHabitacoes = DB::table('tipo_habitacao')
+                ->get();
+                $habitacaoAtual = DB::table('habitacoes')
+                ->join('users', 'users.id', '=', 'habitacoes.id_user')
+                ->where('habitacoes.id', '=', $id)
+                ->select('habitacoes.*', 'users.cc', 'users.nome', 'users.email', 'users.telefone')
+                ->get();
+                return view('admin_cond.editar_habitacao', ["habitacaoAtual" => $habitacaoAtual[0], "tipoHabitacoes" => $tipoHabitacoes, "condominios" => $condominios]);
+            } else {
+                return redirect("/");
+            }
+        }
+  
+        return redirect("/");  
+    }
+
+    public function confirmarEditarHabitacao($id, Request $request)
+    {
+        if(Auth::check()){
+            $user = Auth::user();
+            if ($user->tipo == "adm_cond") {
+                $request->validate([
+                    'condominio' => 'required',
+                    'portaria' => 'required',
+                    'tipoHabitacao' => 'required',
+                    'email' => 'required|email',
+                    'cc' => 'required|min:8|max:8',
+                    'nome' => 'required',
+                    'telefone' => 'required',          
+                ]); 
+                $data = $request->all();
+                
+                $novoProprietario = DB::table('users')->where('cc', $data["cc"])->get();
+                if ($novoProprietario->count() == 1) {
+                    DB::table('habitacoes')->where('id', $id)
+                    ->update([
+                        'id_user' => $novoProprietario[0]->id,
+                        'id_condominio' => $data["condominio"],
+                        'id_tipo' => $data["tipoHabitacao"],
+                        'morada' => "aaa",
+                        'portaria' => $data["portaria"]
+                    ]);
+                    return redirect("/habitacoes");
+                } else {
+                    $data["tipo"] = "prop";
+                    $novoProprietario = $this->create($data);
+                    DB::table('habitacoes')->where('id', $id)
+                    ->update([
+                        'id_user' => $novoProprietario->id,
+                        'id_condominio' => $data["condominio"],
+                        'id_tipo' => $data["tipoHabitacao"],
+                        'morada' => "aaa",
+                        'portaria' => $data["portaria"]
+                    ]);
+                    return redirect("/habitacoes");
+                }    
+            } else {
+                return redirect("/habitacoes");
+            }
+        }
+  
+        return redirect("/utilizadores");  
+    } 
     
     public function novoCondominio()
     {
