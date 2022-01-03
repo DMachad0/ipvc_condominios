@@ -86,6 +86,13 @@ class ApiController extends Controller
                 ->update(['pago' => $request["pago"]]);
     }  
 
+    public function apagarDespesa(Request $request)
+    {
+      return DB::table('despesas')
+                ->where('id', $request["id"])
+                ->delete();
+    }  
+
     public function minhas_atas()
     {
      return DB::table('atas_reunioes')

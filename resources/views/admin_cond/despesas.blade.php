@@ -59,6 +59,18 @@
                                     <div data-widget-group="group1">                                   
                                         <div class="row">
                                             <div class="col-md-12">
+                                            @foreach ($errors->all() as $error)
+                                                <div class="alert alert-dismissable alert-danger">
+                                                    <i class="fa fa-close"></i>&nbsp; {{ $error }}
+                                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                                </div>
+                                            @endforeach
+                                            @if (Session::has('success'))
+                                                <div class="alert alert-dismissable alert-success">
+                                                    <i class="fa fa-close"></i>&nbsp; {{ Session::get('success') }}
+                                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                                </div>
+                                            @endif
                                             <div class="panel panel-primary" data-widget='{"draggable": "false"}'>
                 <div class="panel-heading">
                     <h2>Despesas</h2>
@@ -81,7 +93,7 @@
                                             <h2>Despesas</h2>
                                             <div class="panel-ctrls"></div>
                                             <div class="col-md-3">    
-                                                <a href="/novaDespesa" class="btn btn-xs btn-primary btn-raised">+ NOVA DESPESA</a>          
+                                                <a href="/novaDespesa" class="btn btn-xs btn-primary btn-raised">+ NOVA DESPESA</a>
                                             </div> 
                                         </div>
                                         <div class="panel-body no-padding">

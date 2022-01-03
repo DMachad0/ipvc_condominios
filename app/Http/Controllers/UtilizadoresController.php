@@ -317,6 +317,108 @@ class UtilizadoresController extends Controller
         }
     }   
 
+    public function novaDespesa()
+    {
+        if(Auth::check()){
+            $user = Auth::user();
+            if ($user->tipo == "adm_cond") {
+                $condominios = DB::table('condominios')
+                ->where('id_user', '=', $user->id)
+                ->get();
+
+                return view('admin_cond.nova_despesa', ["condominios" => $condominios]);
+            } else {
+                return redirect("/");
+            }
+        }
+  
+        return redirect("/");  
+    }
+
+    public function confirmarNovaDespesa(Request $request)
+    {
+        if(Auth::check()){
+            $user = Auth::user();
+            if ($user->tipo == "adm_cond") {
+                $request->validate([
+                    'condominio' => 'required',
+                    'data' => 'required',
+                    'descricao' => 'required',
+                    'valor' => 'required'
+                ]); 
+                $data = $request->all();
+                
+                DB::table('despesas')->insert([
+                    'id_condominio' => $data["condominio"],
+                    'descricao' => $data["descricao"],
+                    'valor' => $data["valor"],
+                    'data' => $data["data"],
+                    'pago' => 0
+                ]);
+
+                return redirect("/despesas")->withSuccess('Despesa criada com sucesso.');;
+
+            } else {
+                return redirect("/");
+            }
+        }
+  
+        return redirect("/");  
+    } 
+
+    public function editarDespesa($id)
+    {
+        if(Auth::check()){
+            $user = Auth::user();
+            if ($user->tipo == "adm_cond") {
+                $condominios = DB::table('condominios')
+                ->where('id_user', '=', $user->id)
+                ->get();
+                
+                $despesa = DB::table('despesas')
+                ->where('id', $id)
+                ->get();
+
+                return view('admin_cond.editar_despesa', ["despesa" => $despesa[0], "condominios" => $condominios]);
+            } else {
+                return redirect("/");
+            }
+        }
+  
+        return redirect("/");  
+    }
+
+    public function confirmarEditarDespesa($id, Request $request)
+    {
+        if(Auth::check()){
+            $user = Auth::user();
+            if ($user->tipo == "adm_cond") {
+                $request->validate([
+                    'condominio' => 'required',
+                    'data' => 'required',
+                    'descricao' => 'required',
+                    'valor' => 'required'
+                ]); 
+                $data = $request->all();
+                
+                DB::table('despesas')->where('id', $id)
+                ->update([
+                    'id_condominio' => $data["condominio"],
+                    'descricao' => $data["descricao"],
+                    'valor' => $data["valor"],
+                    'data' => $data["data"]
+                ]);
+
+                return redirect("/despesas")->withSuccess('Despesa editada com sucesso.');;
+
+            } else {
+                return redirect("/");
+            }
+        }
+  
+        return redirect("/");  
+    } 
+
     public function atas()
     {  
         $idCondominio = Session::get('condominio');

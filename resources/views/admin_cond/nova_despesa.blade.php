@@ -38,11 +38,11 @@
                     <div class="static-content">
                         <div class="page-content">
                             <ol class="breadcrumb">                                
-                                <li><a href="/atas">Atas</a></li>
-                                <li class="active"><a href="#">Nova Ata</a></li>
+                                <li><a href="/despesas">Despesas</a></li>
+                                <li class="active"><a href="#">Nova Despesa</a></li>
                             </ol>
                             <div class="page-heading">
-                               <h1>Nova Ata</h1>
+                               <h1>Nova Despesa</h1>
                             </div>
                                 <div class="container-fluid">
                                     <div data-widget-group="group1">
@@ -50,7 +50,7 @@
                                             <div class="col-md-12">
                                                 <div class="panel panel-white" data-widget='{"draggable": "false"}'>
                                                     <div class="panel-heading">
-                                                        <h2>Nova Ata</h2>
+                                                        <h2>Nova Despesa</h2>
                                                     </div>
                                                     <div class="panel-body">
                                                         @foreach ($errors->all() as $error)
@@ -65,14 +65,21 @@
                                                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                                                             </div>
                                                         @endif
-                                                        <form method="POST" class="grid-form" action="{{ route('confirmarNovaAta') }}">    
+                                                        <form method="POST" class="grid-form" action="{{ route('confirmarNovaDespesa') }}">    
                                                                 @csrf	
                                                                 <fieldset>
-                                                                    <legend>Dados da Ata</legend>
-                                                                    <div data-row-span="3">
-                                                                        <div data-field-span="2">
-                                                                            <label>Descrição</label>
-                                                                            <input type="text" name="descricao" required>
+                                                                    <legend>Dados da Despesa</legend>
+                                                                    <div data-row-span="2">
+                                                                        <div data-field-span="1">   
+                                                                            <label>Condominio</label> 
+                                                                            <select name="condominio">
+                                                                                @foreach ($condominios as $condominio)
+                                                                                    @if ($condominio->id == Session::get('condominio'))    
+                                                                                        <option value="{{ $condominio->id }}" selected>{{ $condominio->nome }}</option>
+                                                                                    @else
+                                                                                        <option value="{{ $condominio->id }}">{{ $condominio->nome }}</option>
+                                                                                    @endif
+                                                                                @endforeach
                                                                             </select>
                                                                         </div>
 
@@ -82,10 +89,16 @@
                                                                         </div>
                                                                     </div>
 
-                                                                    <div data-row-span="1">
+                                                                    <div data-row-span="2">
                                                                         <div data-field-span="1">
-                                                                            <label>Ata</label>
-                                                                            <textarea name="ata" cols="30" rows="20" style="resize: none;" required></textarea>
+                                                                            <label>Descrição</label>
+                                                                            <input type="text" name="descricao" required>
+                                                                            </select>
+                                                                        </div>
+
+                                                                        <div data-field-span="1">
+                                                                            <label>Valor</label>
+                                                                            <input type="number" style="border:0" name="valor" required>€
                                                                         </div>
                                                                     </div>
                                                                 </fieldset>
@@ -93,7 +106,7 @@
                                                                 <div class="clearfix pt-md">
                                                                     <div class="pull-right">
                                                                         <button class="btn-raised btn-primary btn">Enviar</button>
-                                                                        <a href="/atas" class="btn-default btn">Cancelar</a>
+                                                                        <a href="/despesas" class="btn-default btn">Cancelar</a>
                                                                     </div>
                                                                 </div>
                                                             </form>

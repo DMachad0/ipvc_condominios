@@ -198,10 +198,10 @@ $(document).ready(function() {
 				{ data: null,
 						render: function (data, type, row) {
 							return '<div class="btn-group dropdown">' +
-							'<a class="btn btn-xs btn-success btn-raised" href="detalhes/' + data.id +'">Detalhes</a>' +
-							'<button class="btn btn-xs btn-success btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>' +
+							'<a class="btn btn-xs btn-warning btn-raised" href="editarDespesa/' + data.id +'">Editar</a>' +
+							'<button class="btn btn-xs btn-warning btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>' +
 							'<ul class="dropdown-menu" role="menu">' +
-								'<li><a href="editar/' + data.id +'">Editar</a></li>' +
+								'<li><a style="color:red" class="apagar" data-id="' + data.id +'">Apagar</a></li>' +
 							'</ul>' +
 						'</div>';
 					} 
@@ -242,6 +242,31 @@ $(document).ready(function() {
 				}
 			}); 
 			
+		});
+
+		$('#tableDespesas tbody').on('click', '.apagar', function(){ 
+			var linha = $(this).parents('tr');
+			var id = $(this).data("id");
+			bootbox.confirm("Tem a certeza que deseja apagar?", function(result) {
+				if (result) {
+					$.ajax({
+						url: "/api/apagarDespesa",
+						type:"POST",
+						headers: {
+							'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+						},
+						data: {
+							'id': id
+						},
+						success:function(response){
+							linha.remove();
+						},
+						error: function(error) {
+							console.log(error);
+						}
+					});
+				}
+			});
 		});
 		
 		$('.dataTables_filter input').attr('placeholder','Procurar...');
