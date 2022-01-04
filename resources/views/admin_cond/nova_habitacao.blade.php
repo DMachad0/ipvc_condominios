@@ -91,6 +91,7 @@
                                                                         <div data-field-span="1">
                                                                             <label>Tipo de Habitação</label>
                                                                             <select name="tipoHabitacao" id="tipoHabitacoes">
+                                                                            <option value="0" hidden>Por favor selecione uma opção</option>
                                                                             @foreach ($tipoHabitacoes as $tipoHabitacao)
                                                                                 <option value="{{ $tipoHabitacao->id }}">{{ $tipoHabitacao->tipo }}</option>
                                                                             @endforeach
