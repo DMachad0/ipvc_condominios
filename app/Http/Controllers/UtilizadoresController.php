@@ -591,5 +591,24 @@ class UtilizadoresController extends Controller
         }
   
         return redirect("/");  
-    } 
+    }
+    
+    public function pagamentos($id)
+    {  
+        $idCondominio = Session::get('condominio');
+        if ($idCondominio) {
+            $habitacaoAtual = DB::table('habitacoes')
+            ->join('tipo_habitacao', 'habitacoes.id_tipo', '=', 'tipo_habitacao.id')
+            ->where('habitacoes.id', $id)
+            ->select('habitacoes.portaria', 'tipo_habitacao.tipo')
+            ->get()[0];
+            $condominioAtual = DB::table('condominios')
+            ->where('id', $idCondominio)
+            ->get()[0];
+            Session::put('habitacao', $id);
+            return view("admin_cond.pagamentos", ["condominioAtual" => $condominioAtual, "habitacaoAtual" => $habitacaoAtual]);
+        } else {
+            return redirect("/");
+        }
+    }   
 }

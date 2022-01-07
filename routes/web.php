@@ -61,6 +61,8 @@ Route::post('novaAta', [UtilizadoresController::class, 'confirmarNovaAta'])->nam
 Route::get('editarAta/{id}', [UtilizadoresController::class, 'editarAta'])->name('editarAta');
 Route::post('editarAta/{id}', [UtilizadoresController::class, 'confirmarEditarAta'])->name('confirmarEditarAta');
 
+Route::get('pagamentos/{id}', [UtilizadoresController::class, 'pagamentos'])->name('pagamentos');
+
 Route::post('confirmarSelecionarCondominio', [UtilizadoresController::class, 'confirmarSelecionarCondominio'])->name('confirmarSelecionarCondominio'); 
 
 //api datatables
@@ -77,9 +79,13 @@ Route::post('api/novaHabitacao', [ApiController::class, 'novaHabitacao'])->name(
 Route::get('api/meus_proprietarios', [ApiController::class, 'meus_proprietarios'])->name('meus_proprietarios');
 
 Route::get('api/minhas_despesas/{estado}', [ApiController::class, 'minhas_despesas'])->name('minhas_despesas');
-Route::post('api/atualizarEstado', [ApiController::class, 'atualizarEstado'])->name('atualizarEstado');
+Route::post('api/atualizarEstadoDespesa', [ApiController::class, 'atualizarEstadoDespesa'])->name('atualizarEstadoDespesa');
 
 Route::get('api/minhas_atas', [ApiController::class, 'minhas_atas'])->name('minhas_atas');
 
 Route::post('api/apagarDespesa', [ApiController::class, 'apagarDespesa'])->name('apagarDespesa');
 Route::get('api/ata/{id}', [ApiController::class, 'ata'])->name('ata');
+
+Route::get('api/pagamentos/{estado}', [ApiController::class, 'pagamentos'])->name('pagamentos');
+Route::post('api/atualizarEstadoPagamento', [ApiController::class, 'atualizarEstadoPagamento'])->name('atualizarEstadoPagamento');
+Route::post('api/apagarPagamento', [ApiController::class, 'apagarPagamento'])->name('apagarPagamento');

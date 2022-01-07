@@ -79,7 +79,7 @@ class ApiController extends Controller
       return false;
     }
 
-    public function atualizarEstado(Request $request)
+    public function atualizarEstadoDespesa(Request $request)
     {
       return DB::table('despesas')
                 ->where('id', $request["id"])
@@ -106,4 +106,45 @@ class ApiController extends Controller
             ->where('id', $id)
             ->get();
     }
+
+    public function pagamentos($estado)
+    {
+      if ($estado == "pago") {
+        return DB::table('pagamentos')
+            ->join('users', 'users.id', '=', 'pagamentos.id_user')
+            ->where('pagamentos.id_habitacao', Session::get('habitacao'))
+            ->where('pagamentos.pago', 1)
+            ->select('pagamentos.*', 'users.nome')
+            ->get();
+      } else if ($estado == "por_pagar") {
+        return DB::table('pagamentos')
+            ->join('users', 'users.id', '=', 'pagamentos.id_user')
+            ->where('pagamentos.id_habitacao', Session::get('habitacao'))
+            ->where('pagamentos.pago', 0)
+            ->select('pagamentos.*', 'users.nome')
+            ->get();
+      } else if ($estado == "todos") {
+        return DB::table('pagamentos')
+            ->join('users', 'users.id', '=', 'pagamentos.id_user')
+            ->where('pagamentos.id_habitacao', Session::get('habitacao'))
+            ->select('pagamentos.*', 'users.nome')
+            ->get();
+      }
+
+      return false;
+    }
+
+    public function atualizarEstadoPagamento(Request $request)
+    {
+      return DB::table('pagamentos')
+                ->where('id', $request["id"])
+                ->update(['pago' => $request["pago"]]);
+    }  
+
+    public function apagarPagamento(Request $request)
+    {
+      return DB::table('pagamentos')
+                ->where('id', $request["id"])
+                ->delete();
+    }  
 }

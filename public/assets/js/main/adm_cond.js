@@ -216,7 +216,7 @@ $(document).ready(function() {
 			bootbox.confirm("Tem a certeza que deseja mudar o estado para " + ((estado == 1) ? "Por Pagar" : "Pago") + "?", function(result) {
 				if (result) {
 					$.ajax({
-						url: "/api/atualizarEstado",
+						url: "/api/atualizarEstadoDespesa",
 						type:"POST",
 						headers: {
 							'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -250,7 +250,7 @@ $(document).ready(function() {
 			bootbox.confirm("Tem a certeza que deseja apagar?", function(result) {
 				if (result) {
 					$.ajax({
-						url: "/api/apagarDespesa",
+						url: "/api/apagarPagamento",
 						type:"POST",
 						headers: {
 							'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -347,6 +347,117 @@ $(document).ready(function() {
 	
 		$('.panel-footer').append($(".dataTable+.row"));
 		$('.dataTables_paginate>ul.pagination').addClass("pull-right m-n");
+	} else if (document.getElementById("tablePagamentos")) {
+		var datatable = $('#tablePagamentos').dataTable({
+			"language": {
+				"lengthMenu": "_MENU_"
+			},
+			"ajax": {
+				"url": "/api/pagamentos/por_pagar",
+				"dataSrc": ""
+			},
+			columns: [
+				{ data: 'data' },
+				{ data: null,
+					render: function (data, type, row) {
+						return data.valor + '€';
+					}
+				},
+				{ data: null,
+					render: function (data, type, row) {
+						if (data.pago == 1) {
+							return '<a class="marcarPago" data-id=' + data.id + ' data-estado=1 style="color:green">Pago</a>';
+						} else if (data.pago == 0) {
+							return '<a class="marcarPago" data-id=' + data.id + ' data-estado=0 style="color:red">Por Pagar</a>';
+						}
+					} 
+				},
+				{ data: 'nome' },
+				{ data: null,
+						render: function (data, type, row) {
+							return '<div class="btn-group dropdown">' +
+							'<a class="btn btn-xs btn-danger btn-raised apagar" data-id="' + data.id +'">Apagar</a>' +
+						'</div>';
+					} 
+				}
+			]
+		});
+
+		$('#tablePagamentos tbody').on('click', '.marcarPago', function(){ 
+			var html = $(this);
+			var estado = html.data("estado");
+			var id = html.data("id");
+			bootbox.confirm("Tem a certeza que deseja mudar o estado para " + ((estado == 1) ? "Por Pagar" : "Pago") + "?", function(result) {
+				if (result) {
+					$.ajax({
+						url: "/api/atualizarEstadoPagamento",
+						type:"POST",
+						headers: {
+							'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+						},
+						data: {
+							'id': id,
+							'pago': ((estado == 1) ? 0 : 1)
+						},
+						success:function(response){
+							var stringPago = '<a class="marcarPago" data-id=' + id + ' data-estado=1 style="color:green">Pago</a>';
+							var stringPorPagar = '<a class="marcarPago" data-id=' + id + ' data-estado=0 style="color:red">Por Pagar</a>';
+
+							if (estado == 1) {
+								html.parent().html(stringPorPagar);
+							} else if (estado == 0) {
+								html.parent().html(stringPago);
+							}
+						},
+						error: function(error) {
+							console.log(error);
+						}
+					});
+				}
+			}); 
+			
+		});
+
+		$('#tablePagamentos tbody').on('click', '.apagar', function(){ 
+			var linha = $(this).parents('tr');
+			var id = $(this).data("id");
+			bootbox.confirm("Tem a certeza que deseja apagar?", function(result) {
+				if (result) {
+					$.ajax({
+						url: "/api/apagarPagamento",
+						type:"POST",
+						headers: {
+							'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+						},
+						data: {
+							'id': id
+						},
+						success:function(response){
+							linha.remove();
+						},
+						error: function(error) {
+							console.log(error);
+						}
+					});
+				}
+			});
+		});
+		
+		$('.dataTables_filter input').attr('placeholder','Procurar...');
+	
+	
+		//DOM Manipulation to move datatable elements integrate to panel
+		$('.panel-ctrls').append($('.dataTables_filter').addClass("pull-right")).find("label").addClass("panel-ctrls-center");
+		$('.panel-ctrls').append("<i class='separator'></i>");
+		$('.panel-ctrls').append($('.dataTables_length').addClass("pull-left")).find("label").addClass("panel-ctrls-center");
+	
+		$('.panel-footer').append($(".dataTable+.row"));
+		$('.dataTables_paginate>ul.pagination').addClass("pull-right m-n");
+
+		$(".atualizarTabela").click(function(){ 
+			datatable.api().ajax.url('/api/pagamentos/' + $(this).data("id")).load();
+		});
+
 	}
     
 });
