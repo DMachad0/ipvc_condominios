@@ -106,9 +106,6 @@
     </div>
 
     <div class="row">
-    <div class="col-md-12">
-        <a href="/novo" class="btn btn-primary btn-raised pull-right">+ NOVO UTILIZADOR</a>
-    </div>
         <div class="col-md-12">
         <div class="panel panel-primary" data-widget='{"draggable": "false"}'>
                 <div class="panel-heading">
@@ -129,7 +126,11 @@
                                 <div class="col-md-12">
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
+                                            <h2>Utilizadores</h2>
                                             <div class="panel-ctrls"></div>
+                                            <div class="col-md-3">    
+                                                <a href="/novo" class="btn btn-xs btn-primary btn-raised">+ NOVO UTILIZADOR</a>          
+                                            </div> 
                                         </div>
                                         <div class="panel-body no-padding">
                                             <table class="table table-striped table-bordered" id="tableHome" cellspacing="0" width="100%">

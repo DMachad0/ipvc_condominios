@@ -147,4 +147,51 @@ class ApiController extends Controller
                 ->where('id', $request["id"])
                 ->delete();
     }  
+
+    public function habitacoes_users($id)
+    {
+      return DB::table('habitacoes')
+          ->join('tipo_habitacao', 'habitacoes.id_tipo', '=', 'tipo_habitacao.id')
+          ->where('habitacoes.id_user', $id)
+          ->where('habitacoes.id_condominio', Session::get('condominio'))
+          ->select('habitacoes.*', 'tipo_habitacao.tipo')
+          ->get();
+    }
+
+    public function minhas_habitacoes_prop()
+    {
+      return DB::table('habitacoes')
+          ->join('tipo_habitacao', 'habitacoes.id_tipo', '=', 'tipo_habitacao.id')
+          ->join('condominios', 'habitacoes.id_condominio', '=', 'condominios.id')
+          ->where('habitacoes.id_user', Auth::user()->id)
+          ->select('habitacoes.*', 'tipo_habitacao.tipo', 'condominios.nome')
+          ->get();
+    }
+
+    public function pagamentos_user($id, $estado)
+    {
+      if ($estado == "pago") {
+        return DB::table('pagamentos')
+            ->join('users', 'users.id', '=', 'pagamentos.id_user')
+            ->where('pagamentos.id_habitacao', $id)
+            ->where('pagamentos.pago', 1)
+            ->select('pagamentos.*', 'users.nome')
+            ->get();
+      } else if ($estado == "por_pagar") {
+        return DB::table('pagamentos')
+            ->join('users', 'users.id', '=', 'pagamentos.id_user')
+            ->where('pagamentos.id_habitacao', $id)
+            ->where('pagamentos.pago', 0)
+            ->select('pagamentos.*', 'users.nome')
+            ->get();
+      } else if ($estado == "todos") {
+        return DB::table('pagamentos')
+            ->join('users', 'users.id', '=', 'pagamentos.id_user')
+            ->where('pagamentos.id_habitacao', $id)
+            ->select('pagamentos.*', 'users.nome')
+            ->get();
+      }
+
+      return false;
+    }
 }

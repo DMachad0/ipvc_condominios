@@ -610,5 +610,79 @@ class UtilizadoresController extends Controller
         } else {
             return redirect("/");
         }
-    }   
+    }  
+    
+    public function novoPagamento()
+    {
+        if(Auth::check()){
+            $user = Auth::user();
+            if ($user->tipo == "adm_cond") {
+                $habitacaoAtual = DB::table('habitacoes')
+                ->join('tipo_habitacao', 'habitacoes.id_tipo', '=', 'tipo_habitacao.id')
+                ->join('users', 'habitacoes.id_user', '=', 'users.id')
+                ->where('habitacoes.id', Session::get('habitacao'))
+                ->select('habitacoes.portaria', 'habitacoes.id_user', 'tipo_habitacao.tipo', 'users.nome')
+                ->get()[0];
+                $condominioAtual = DB::table('condominios')
+                ->where('id', Session::get('condominio'))
+                ->get()[0];
+                return view('admin_cond.novo_pagamento', ["condominioAtual" => $condominioAtual, "habitacaoAtual" => $habitacaoAtual]);
+            } else {
+                return redirect("/");
+            }
+        }
+  
+        return redirect("/");  
+    }
+
+    public function confirmarNovoPagamento(Request $request)
+    {
+        if(Auth::check()){
+            $user = Auth::user();
+            if ($user->tipo == "adm_cond") {
+                $request->validate([
+                    'user' => 'required',
+                    'data' => 'required',
+                    'valor' => 'required'
+                ]);
+                $data = $request->all();
+
+                DB::table('pagamentos')->insert([
+                    'data' => $data["data"],
+                    'valor' => $data["valor"],
+                    'id_user' => $data["user"],
+                    'id_habitacao' => Session::get('habitacao'),
+                    'pago' => 0
+                ]);
+                return redirect("/pagamentos/" . Session::get('habitacao'));
+            } else {
+                return redirect("/login");
+            }
+        }
+  
+        return redirect("/login");  
+    } 
+
+    public function verPagamentos($id)
+    {  
+        $habitacaoAtual = DB::table('habitacoes')
+        ->join('tipo_habitacao', 'habitacoes.id_tipo', '=', 'tipo_habitacao.id')
+        ->where('habitacoes.id', $id)
+        ->select('habitacoes.portaria', 'tipo_habitacao.tipo')
+        ->get()[0];
+        return view("props.pagamentos", ["habitacaoAtual" => $habitacaoAtual]);
+    }  
+
+    public function pagar($id)
+    {  
+        DB::table('pagamentos')
+                ->where('id', $id)
+                ->update(['pago' => 1]);
+        $habitacao =  DB::table('pagamentos')
+        ->where('id', $id)
+        ->get()[0];
+        return redirect('/verPagamentos/' . $habitacao->id_habitacao);
+    }  
+
+    
 }

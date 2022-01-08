@@ -62,8 +62,14 @@ Route::get('editarAta/{id}', [UtilizadoresController::class, 'editarAta'])->name
 Route::post('editarAta/{id}', [UtilizadoresController::class, 'confirmarEditarAta'])->name('confirmarEditarAta');
 
 Route::get('pagamentos/{id}', [UtilizadoresController::class, 'pagamentos'])->name('pagamentos');
+Route::get('novoPagamento', [UtilizadoresController::class, 'novoPagamento'])->name('novoPagamento');
+Route::post('novoPagamento', [UtilizadoresController::class, 'confirmarNovoPagamento'])->name('confirmarNovoPagamento');
+
+Route::get('verPagamentos/{id}', [UtilizadoresController::class, 'verPagamentos'])->name('verPagamentos');
 
 Route::post('confirmarSelecionarCondominio', [UtilizadoresController::class, 'confirmarSelecionarCondominio'])->name('confirmarSelecionarCondominio'); 
+
+Route::get('pagar/{id}', [UtilizadoresController::class, 'pagar'])->name('pagar');
 
 //api datatables
 Route::get('api/admins', [ApiController::class, 'admins'])->name('admins');
@@ -89,3 +95,9 @@ Route::get('api/ata/{id}', [ApiController::class, 'ata'])->name('ata');
 Route::get('api/pagamentos/{estado}', [ApiController::class, 'pagamentos'])->name('pagamentos');
 Route::post('api/atualizarEstadoPagamento', [ApiController::class, 'atualizarEstadoPagamento'])->name('atualizarEstadoPagamento');
 Route::post('api/apagarPagamento', [ApiController::class, 'apagarPagamento'])->name('apagarPagamento');
+
+Route::get('api/habitacoes_users/{id}', [ApiController::class, 'habitacoes_users'])->name('habitacoes_users');
+
+Route::get('api/minhas_habitacoes_prop', [ApiController::class, 'minhas_habitacoes_prop'])->name('minhas_habitacoes_prop');
+
+Route::get('api/pagamentos_user/{id}/{estado}', [ApiController::class, 'pagamentos_user'])->name('pagamentos_user');

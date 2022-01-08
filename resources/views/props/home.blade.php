@@ -45,7 +45,7 @@
 
 <div id="wrapper">
     <div id="layout-static">
-        @include('includes_admin_cond.sidenav')
+        @include('includes.sidenav')
             <div class="static-content-wrapper">
                 <div class="static-content">
                     <div class="page-content">
@@ -60,92 +60,22 @@
                                 <div class="container-fluid">
                                     <div data-widget-group="group1">
                                         <div class="row">
-
-                                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                                <div class="info-tile info-tile-alt tile-orange ">
-                                                    <div class="info">
-                                                        <div class="tile-heading"><span>Condomínios / Clientes</span></div>
-                                                        <div class="tile-body "><span>2,344</span></div>
-                                                    </div>
-                                                    <div class="stats">
-                                                        <div class="tile-content">
-                                                            <span class="material-icons tile-icon">business_center</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                                <div class="info-tile info-tile-alt tile-blue ">
-                                                    <div class="info">
-                                                        <div class="tile-heading"><span>Proprietários</span></div>
-                                                        <div class="tile-body "><span>2</span></div>
-                                                    </div>
-                                                    <div class="stats">
-                                                        <div class="tile-content">
-                                                            <span class="material-icons tile-icon">face</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                                <div class="info-tile info-tile-alt tile-green">
-                                                    <div class="info">
-                                                        <div class="tile-heading"><span>Habitações</span></div>
-                                                        <div class="tile-body "><span>9000</span></div>
-                                                    </div>
-                                                    <div class="stats">
-                                                        <div class="tile-content">
-                                                            <span class="material-icons tile-icon">home</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
                                             <div class="col-md-12">
                                                 <div class="panel panel-default">
                                                     <div class="panel-heading">
-                                                        <h2>Clientes</h2>
+                                                        <h2>Habitações</h2>
                                                         <div class="panel-ctrls"></div>
                                                     </div>
                                                     <div class="panel-body no-padding">
-                                                        <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                                        <table class="table table-striped table-bordered" id="tableHome" cellspacing="0" width="100%">
                                                             <thead>
                                                                 <tr>
-                                                                    <th>Cliente</th>
-                                                                    <th>Morada</th>
-                                                                    <th>Telefone</th>
+                                                                    <th>Portaria</th>
+                                                                    <th>Tipo de Habitação</th>
+                                                                    <th>Condominio</th>
                                                                     <th>Ações</th>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td>JOAO AFONSO</td>
-                                                                    <td>Rua do Antonio</td>
-                                                                    <td>+351 919919919</td>
-                                                                    <td ><div class="btn-group dropdown">
-                                                                            <button class="btn btn-xs btn-success btn-raised">Detalhes</button>
-                                                                            <button class="btn btn-xs btn-success btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-                                                                            <ul class="dropdown-menu" role="menu">
-                                                                                <li><a href="">Editar</a></li>
-                                                                            </ul>
-                                                                        </div></td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>MARIA AFONSO</td>
-                                                                    <td>Rua do Joao</td>
-                                                                    <td>+351 929929929</td>
-                                                                    <td><div class="btn-group dropdown">
-                                                                            <button class="btn btn-xs btn-success btn-raised">Detalhes</button>
-                                                                            <button class="btn btn-xs btn-success btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-                                                                            <ul class="dropdown-menu" role="menu">
-                                                                                <li><a href="">Editar</a></li>
-                                                                            </ul>
-                                                                        </div></td>
-                                                                </tr>
-                                                            </tbody>
                                                         </table>
                                                     </div>
                                                     <div class="panel-footer"></div>
@@ -223,6 +153,7 @@
     <script src="assets/plugins/datatables/jquery.dataTables.js"></script>
     <script src="assets/plugins/datatables/dataTables.bootstrap.js"></script>
     <script src="assets/demo/demo-datatables.js"></script>
+    <script src="assets/js/main/prop.js"></script>
 
     </body>
 </html>

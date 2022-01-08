@@ -11,11 +11,7 @@ $(document).ready(function() {
 			columns: [
 				{ data: 'portaria' },
 				{ data: 'tipo' },
-				{ data: null,
-						render: function (data, type, row) {
-							return '<a href="/proprietarios/' + data.id_user +'">' + data.nome +'</a>';
-					} 
-				},
+				{ data: 'nome' },
 				{ data: null,
 						render: function (data, type, row) {
 							return '<div class="btn-group dropdown">' +
@@ -147,12 +143,39 @@ $(document).ready(function() {
 				{ data: 'habitacoes' },
 				{ data: null,
 						render: function (data, type, row) {
+							$(".resumo").unbind().click(function(){ 
+								var id = $(this).data("id");
+								axios.get('/api/habitacoes_users/' + id)
+								.then((response) => {
+									if (response.data[0]) {
+										bootbox.hideAll();
+										var fullString = "<hr>";
+										for (let i = 0; i < response.data.length; i++) {
+											fullString += "<b>Habitação:</b> " + response.data[i].portaria + "<br><b>Tipo de Habitação:</b> " + response.data[i].tipo + "<br><b>Pagamentos:</b> <a href='/pagamentos/" + response.data[i].id + "'>Clique Aqui!</a><hr>"
+										}
+										bootbox.alert(fullString);
+									} else {
+										new PNotify({
+											title: 'Oops!',
+											text: 'Ocorreu um erro por favor tente mais tarde.',
+											type: 'error',
+											icon: 'ti ti-close',
+											styling: 'fontawesome'
+										});
+									}
+								})
+								.catch((error) => {
+									new PNotify({
+										title: 'Oops!',
+										text: 'Ocorreu um erro por favor tente mais tarde.',
+										type: 'error',
+										icon: 'ti ti-close',
+										styling: 'fontawesome'
+									});
+								});
+							});
 							return '<div class="btn-group dropdown">' +
-							'<a class="btn btn-xs btn-success btn-raised" href="detalhes/' + data.id +'">Detalhes</a>' +
-							'<button class="btn btn-xs btn-success btn-raised dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>' +
-							'<ul class="dropdown-menu" role="menu">' +
-								'<li><a href="editar/' + data.id +'">Editar</a></li>' +
-							'</ul>' +
+							'<a class="btn btn-xs btn-success btn-raised resumo" data-id="' + data.id +'" >Detalhes</a>' +
 						'</div>';
 					} 
 				}
@@ -298,7 +321,7 @@ $(document).ready(function() {
 				{ data: 'descricao' },
 				{ data: null,
 						render: function (data, type, row) {
-							$(".resumo").click(function(){ 
+							$(".resumo").unbind().click(function(){ 
 								var id = $(this).data("id");
 								axios.get('/api/ata/' + id)
 								.then((response) => {
